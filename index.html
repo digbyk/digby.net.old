@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="" data-ng-app="AiwfModule">
+<!--<![endif]-->
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Princess+Sofia|Roboto' type='text/css'>
+<link rel="stylesheet" href="css/main.css" type="text/css">
+
+<link rel="shortcut icon" sizes="196x196" href="images/favicon.png">
+<link rel="shortcut icon" sizes="128x128" href="images/favicon.png">
+<link rel="apple-touch-icon" sizes="128x128" href="images/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="128x128" href="images/favicon.png">
+
+
+<title>All I Want For</title>
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse" data-role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/">All I Want For</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li data-ng-show="loggedIn" class=""><a href="#/my/">My gifts</a></li>
+				<li data-ng-show="loggedIn"><a href="#/new/">Add gift</a></li>
+				<li data-ng-show="loggedIn"><a href="#/others/">Others' gifts</a></li>
+				<li data-ng-show="loggedIn" class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Shopping<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/amazon">Amazon</a></li>
+						<li class="divider"></li>
+					</ul></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right" data-ng-controller="LoginController">
+				<li data-ng-hide="loggedIn">
+					<div id="login">
+						<google-plus-signin clientid="1001825764156-oa42aphul3dbt6m9b1c4sqh4huf2mhbb" />
+					</div>
+				</li>
+				<li data-ng-show="loggedIn"><a href="#" data-ng-click="logout()">Logout</a></li>
+				<li><a href="#/help">Help</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</nav>
+	<div class="container">
+		<div>
+			<div data-ng-view></div>
+		</div>
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	<script src="//apis.google.com/js/client.js?onload=handleClientLoad"></script>
+	<script src='//cdn.firebase.com/v0/firebase.js'></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js"></script>
+	<script src="//cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/Snowstorm/20101113/snowstorm-min.js"></script>
+	<script src="js/application.js"></script>
+	<script src="js/googleplus.js"></script>
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-688300-5', 'plus.com');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>

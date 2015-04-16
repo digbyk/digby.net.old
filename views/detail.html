@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-xs-12">
+		<section class="panel" data-ng-cloak>
+			<h1 data-ng-show="isNew">New gift</h1>
+			<h1 data-ng-hide="isNew">Edit gift</h1>
+			<form name="newGiftForm">
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Gift name</label>
+					<div class="col-sm-10">
+						<input class="form-control" id="name" name="name" placeholder="Gift name" data-ng-model="gift.name" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="url" class="col-sm-2 control-label">URL</label>
+					<div class="col-sm-10">
+						<input type="url" class="form-control" id="url" name="url" data-ng-model="gift.url" placeholder="http://www.example.com">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="notes" class="col-sm-2 control-label">Notes</label>
+					<div class="col-sm-10">
+						<textarea id="notes" name="notes" class="form-control"  data-ng-model="gift.notes"rows="3"></textarea>
+					</div>
+				</div>
+				<a href="#/my" class="btn">Cancel</a>
+				<button data-ng-click="create()" data-ng-show="isNew" data-ng-disabled="newGiftForm.$invalid" class="btn btn-primary">Create</button>
+				<button data-ng-click="save()" data-ng-hide="isNew" data-ng-disabled="newGiftForm.$invalid" class="btn btn-primary">Save</button>
+				<button data-ng-click="remove()" data-ng-hide="isNew" class="btn btn-danger">Delete</button>
+			</form>
+		</section>
+	</div>
+</div>

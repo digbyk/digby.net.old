@@ -1,0 +1,195 @@
+/* FONT STACK */
+body,input,select,textarea {
+	font-family: Roboto, "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+html {
+
+}
+
+html.no-cssgradients {
+
+}
+
+.ie6 html {
+	height: 100%;
+}
+
+html * {
+	margin: 0;
+}
+
+body {
+	color: #333333;
+	background: #800
+		url(http://1.bp.blogspot.com/-7p_YoFV0vZM/TkzD5YTl0bI/AAAAAAAAAGM/Y9CePZNvuNU/s1600/Christmas-Wallpapers.jpg)
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+@media ( max-width: 767px) {
+	body {
+		background: #800;
+	}
+}
+
+h1,h2,h3,h4,h5,h6 {
+	line-height: 1.1;
+}
+
+h1 {
+	font-family: 'Princess Sofia', cursive;
+}
+
+.banner h1 {
+	text-shadow: 4px 4px 6px rgba(100, 100, 100, 1);
+	text-align: center;
+}
+
+@media ( max-width: 767px) {
+	.banner h1 {
+		font-size: 4em;
+	}
+}
+
+@media ( min-width: 768px) {
+	.banner h1 {
+		font-size: 6em;
+	}
+}
+
+@media ( min-width: 992px) {
+	.banner h1 {
+		font-size: 8em;
+	}
+}
+
+#Overrides
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 950px; /* or 950px */
+}
+
+.navbar-inverse {
+	background-image: none;
+	background-color: rgba(128, 0, 0, 0.8)
+}
+
+.navbar-inverse .navbar-nav>li>a,.navbar-inverse .navbar-brand {
+	color: #ccc;
+}
+
+.navbar-brand {
+	font-family: 'Princess Sofia', cursive;
+	font-size: 18px;
+}
+
+.panel {
+	background: rgba(255, 255, 255, 0.85);
+	margin: 1em 0;
+	padding: 1em;
+}
+
+.panel.banner {
+	background: rgba(128, 0, 0, 0.8);
+	padding: 4em 0;
+}
+
+#othersGiftTable tr.boughtByMe {
+	font-weight: normal;
+	background-color: #ffeeee;
+}
+
+#othersGiftTable tr.boughtByOther {
+	text-decoration: line-through;
+}
+
+tr.boughtByMe .buyButton {
+	display: none;
+}
+
+tr:not (.boughtByMe ) .returnButton {
+	display: none;
+}
+
+table.notwide {
+	width: auto;
+}
+
+#loginRow .panel {
+	padding: 1em;
+	text-align: center;
+}
+
+.loggedIn #loginRow,.loggedOut #mainRow {
+	display: none;
+}
+
+.loggedIn #mainRow,.loggedOut #loginRow {
+	display: block;
+}
+
+p:empty {
+	display: none;
+}
+
+.banner img {
+	width: 100%;
+	xmax-width: 600px;
+}
+
+th[data-sort] {
+	cursor: pointer;
+}
+
+p {
+	margin: 0.5em 0;
+}
+
+th.header {
+	background-image: url(images/bg.gif);
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+th.headerSortUp {
+	background-image: url(images/asc.gif);
+}
+
+th.headerSortDown {
+	background-image: url(images/desc.gif);
+}
+
+.table td:nth-child(2) {
+	width: 60%;
+}
+
+.truncate {
+	max-width: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+h1,h2,h3,h4 {
+	margin: 0.5em 0;
+}
+
+h1,h2,h3,h4,th,a {
+	color: #800;
+}
+
+#login {
+	text-align: center;
+	padding: 10px 0 0 0;
+}
+
+#login iframe, #login button {
+	height: 30px !important;
+}

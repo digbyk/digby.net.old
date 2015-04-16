@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-xs-12">
+		<section class="panel" data-ng-cloak>
+			<h1>My gifts</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Gift</th>
+						<th>Notes</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="gift in gifts | orderByPriority | filter: enteredByMe | orderBy:'name'" data-id="{{gift.$id}}">
+						<td><a href="{{gift.url}}">{{gift.name}}</a></td>
+						<td>{{gift.notes}}</td>
+						<td><a class="btn btn-warning" href="#/edit/{{gift.$id}}"><i class=""></i>Edit</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+</div>
