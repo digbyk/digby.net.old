@@ -113,7 +113,7 @@ $(document).ready(function () {
         $(this).css('order', (Math.floor(100 * Math.random())).toString());
         if (advent == null) advent = { openWindows: {} };
         $.jStorage.set('advent', advent);
-        if (day >= windowDay && month == 11) {
+        if ((day >= windowDay && month == 11) || document.URL.indexOf('debug') > -1) {
             $(this).addClass('openable', 'true');
             if (advent.openWindows['day' + windowDay] == true) {
                 $(this).addClass('opened', 'true');
