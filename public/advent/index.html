@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+		<link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+		<script src="//code.jquery.com/jquery-latest.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.12/jstorage.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/script.js"></script>
+	</head>
+	<body>
+		<section id="outer">
+			<section id="header">
+				<h1>The Knights Advent Calendar</h1>
+			</section>
+			<section id="main" data-bind="foreach: windows">
+				<div class="window"
+					data-bind="attr: { 'data-day': id, 'data-thumbnail': url, 'data-content': url }"
+					>
+					<span data-bind="text: id"/>
+				</div>
+			</section>
+			<section id="footer">
+				<h4 class="reset">Made by Digby and Ella</h4>
+			</section>
+		</section>
+	</body>
+</html>
+
