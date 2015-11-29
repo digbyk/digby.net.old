@@ -123,6 +123,7 @@ $(document).ready(function () {
                 $(this).featherlight($(this).data('content'), {});
             }
             $(this).click(function () {
+                document.getElementById('ding').play()
                 var advent = $.jStorage.get('advent');
                 $(this).addClass('opened', 'true');
                 advent.openWindows['day' + windowDay] = true;
