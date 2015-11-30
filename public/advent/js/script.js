@@ -110,15 +110,13 @@ $(document).ready(function () {
         var month = date.getMonth();
         var windowDay = $(this).data('day');
         var advent = $.jStorage.get('advent');
-        $(this).css('order', (Math.floor(100 * Math.random())).toString());
         if (advent == null) advent = { openWindows: {} };
         $.jStorage.set('advent', advent);
+        $(this).css('order', (Math.floor(100 * Math.random())).toString());
         if ((day >= windowDay && month == 11) || document.URL.indexOf('debug') > -1) {
             $(this).addClass('openable', 'true');
             if (advent.openWindows['day' + windowDay] == true) {
                 $(this).addClass('opened', 'true');
-            }
-            if ($(this).hasClass('opened')) {
                 $(this).css('background-image', 'url(' + thumbnail + ')');
                 $(this).featherlight($(this).data('content'), {});
             }
