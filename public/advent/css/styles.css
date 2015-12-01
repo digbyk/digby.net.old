@@ -35,7 +35,8 @@ body {
 	background-color: rgba(0,0,0,0.2);
 	border-color: white;
 	border-width: 3px;
-	border-style: dotted;
+	border: 2px solid rgba(255,255,255,0.6);
+	border-left: 2px dashed rgba(255,255,255,0.6);
 	width: 120px;
 	height: 80px;
 	margin: 30px;
@@ -50,7 +51,7 @@ body {
 	border-radius: 1em;
 	background-color: rgba(0,0,0,0.2);
 	padding: 0.2em 0.6em;
-};
+}
 .window.openable {
 	cursor: pointer;
 }
