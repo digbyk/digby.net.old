@@ -1,7 +1,7 @@
 {
-  "name": "all-i-want-for-ang",
+  "name": "digbynet",
   "version": "1.0.0",
-  "description": "Angular / Firebase version of AIWF",
+  "description": "My website",
   "main": "app.js",
   "engines": {
     "node": ">= 4.0.0",
