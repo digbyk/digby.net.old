@@ -1,6 +1,8 @@
-require('newrelic');
+var newrelic = require('newrelic');
 var express = require('express');
 var app = express();
+
+app.locals.newrelic = newrelic;
 
 app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));
