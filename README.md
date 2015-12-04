@@ -1,2 +1,2 @@
 # digby.net
-digby.net
+www.digby.net

@@ -3,7 +3,6 @@ require('dotenv').load();
 
 var path = require('path');
 var express = require('express');
-var app = express();
 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -11,6 +10,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
+
+var app = express();
 
 app.use(session({
 	store: new RedisStore({ url: process.env.REDIS_URL }),
