@@ -25,6 +25,7 @@ app.set('view engine', 'jade');
 
 var routes = require('./routes');
 app.use('/', routes);
+app.use('/test', require('./routes/test'));
 
 app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));
