@@ -43,7 +43,7 @@ body {
 	font-size: 1.2em;
 	font-weight: bold;
 	background-size: cover;	
-	transition: background 2s linear;
+	transition: background 0.25s linear;
 }
 .window span {
 	border-radius: 1em;
@@ -52,4 +52,7 @@ body {
 }
 .window.openable {
 	cursor: pointer;
+}
+.window.openable:hover {
+	background-color: rgba(255,255,255,0.5);
 }
