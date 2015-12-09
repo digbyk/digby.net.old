@@ -1,3 +1,5 @@
+'use strict';
+
 var newrelic = require('newrelic');
 require('dotenv').load();
 

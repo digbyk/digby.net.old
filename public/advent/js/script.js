@@ -104,38 +104,48 @@ $(document).ready(function () {
     ko.applyBindings(new WindowsViewModel);
 
     $('.window').each(function () {
-        var thumbnail = $(this).data('thumbnail');
-        var date = new Date();
-        var day = date.getDate();
-        var month = date.getMonth();
-        var windowDay = $(this).data('day');
-        var advent = $.jStorage.get('advent');
-        if (advent == null) advent = { openWindows: {} };
-        $.jStorage.set('advent', advent);
-        $(this).css('order', (Math.floor(100 * Math.random())).toString());
-        if ((day >= windowDay && month == 11) || document.URL.indexOf('debug') > -1) {
-            $(this).addClass('openable', 'true');
-            if (advent.openWindows['day' + windowDay] == true) {
-                $(this).addClass('opened', 'true');
-                $(this).css('background-image', 'url(' + thumbnail + ')');
-                $(this).featherlight($(this).data('content'), {});
-            }
-            $(this).click(function () {
-                var ding = document.getElementById('ding');
-                ding.play();
-                ding.volume = 0.1;
-                var advent = $.jStorage.get('advent');
-                $(this).addClass('opened', 'true');
-                advent.openWindows['day' + windowDay] = true;
-                $.jStorage.set('advent', advent);
-                $(this).css('background-image', 'url(' + thumbnail + ')');
-                $(this).featherlight($(this).data('content'), {});
-            });
-        }
+        updateWindows();
     });
 
     $('.reset').click(function () {
         $.jStorage.set('advent', { openWindows: {} });
     });
 
+	setInterval(function () {
+		updateWindows();
+	}, 5 * 60 * 1000);
+
+	function updateWindows() {
+		$('.window').each(function () {
+			var thumbnail = $(this).data('thumbnail');
+			var date = new Date();
+			var day = date.getDate();
+			var month = date.getMonth();
+			var windowDay = $(this).data('day');
+			var advent = $.jStorage.get('advent');
+			if (advent == null) advent = { openWindows: {} };
+			$.jStorage.set('advent', advent);
+			$(this).css('order', (Math.floor(100 * Math.random())).toString());
+			if ((day >= windowDay && month == 11) || document.URL.indexOf('debug') > -1) {
+				$(this).addClass('openable', 'true');
+				if (advent.openWindows['day' + windowDay] == true) {
+					$(this).addClass('opened', 'true');
+					$(this).css('background-image', 'url(' + thumbnail + ')');
+					$(this).featherlight($(this).data('content'), {});
+				}
+				$(this).click(function () {
+					var ding = document.getElementById('ding');
+					ding.play();
+					ding.volume = 0.1;
+					var advent = $.jStorage.get('advent');
+					$(this).addClass('opened', 'true');
+					advent.openWindows['day' + windowDay] = true;
+					$.jStorage.set('advent', advent);
+					$(this).css('background-image', 'url(' + thumbnail + ')');
+					$(this).featherlight($(this).data('content'), {});
+				});
+			}
+		});
+
+	}
 });
