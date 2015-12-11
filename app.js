@@ -14,6 +14,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
+
 var app = express();
 
 app.use(helmet());
@@ -25,12 +26,17 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+var passport = require('./passport.js');
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 var routes = require('./routes');
 app.use('/', routes);
 app.use('/test', require('./routes/test'));
+app.use('/auth', require('./routes/auth'));
 
 app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));

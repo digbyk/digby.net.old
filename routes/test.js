@@ -4,8 +4,7 @@ var redis = require("redis");
 var client = redis.createClient();
 
 router.get('/', function (req, res) {
-	client.hset('test', 'digby', {name: 'Digby'});
-	res.render('test');
+	res.render('test', {user: req.user});
 });
 
 router.get('/error/:code', function (req, res) {

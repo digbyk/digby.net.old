@@ -3,3 +3,10 @@ extends layout
 block content
 	section#main
 		p www.digby.net
+		if !user
+			p
+				a(href="/auth/google") login
+		else
+			p= user.displayName
+			p
+				a(href="/auth/logout") logout

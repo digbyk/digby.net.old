@@ -15,3 +15,11 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+a {
+	color: #ccc;
+	text-decoration: none;
+}
+a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
