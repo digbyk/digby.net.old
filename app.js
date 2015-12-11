@@ -14,6 +14,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
+console.log(process.env.REDIS_URL);
 
 var app = express();
 
