@@ -28,9 +28,9 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-var passport = require('./passport.js');
-app.use(passport.initialize());
-app.use(passport.session());
+//var passport = require('./passport.js');
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
