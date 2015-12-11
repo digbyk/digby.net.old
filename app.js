@@ -12,7 +12,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
+//var RedisStore = require('connect-redis')(session);
 
 console.log(process.env.REDIS_URL);
 
@@ -22,7 +22,7 @@ var app = express();
 app.use(helmet());
 
 app.use(session({
-	store: new RedisStore({ url: process.env.REDIS_URL }),
+	//store: new RedisStore({ url: process.env.REDIS_URL }),
 	secret: 'scrt',
 	resave: true,
 	saveUninitialized: true
