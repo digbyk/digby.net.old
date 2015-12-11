@@ -16,6 +16,7 @@ var RedisStore = require('connect-redis')(session);
 
 console.log(process.env.REDIS_URL);
 
+
 var app = express();
 
 app.use(helmet());
