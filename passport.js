@@ -1,6 +1,8 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
+var User = require('./model/user.js');
+
 passport.serializeUser(function (user, done) {
 	done(null, user);
 });
@@ -19,14 +21,33 @@ passport.use(new GoogleStrategy({
 },
 	function (accessToken, refreshToken, profile, done) {
 		process.nextTick(function () {
-      
-			// To keep the example simple, the user's Google profile is returned to
-			// represent the logged-in user.  In a typical application, you would want
-			// to associate the Google account with a user record in your database,
-			// and return that user instead.
-			return done(null, profile);
+			User.findOne({ email: profile.emails[0].value }, function (err, user) {
+				if (err) { return done(err); }
+				if (!user) {
+					var user2 = new User({
+						email: profile.emails[0].value, displayName: profile.displayName
+					});
+					user2.save(function (err) {
+						if (err) {
+							console.error(err);
+							return done(err);
+						}
+						return done(null, user2);
+					});
+				} else {
+					user.lastLoggedIn = new Date();
+					user.save(function (err) {
+						if (err) {
+							console.error(err);
+							return done(err);
+						}
+						return done(null, user);
+					});
+
+				}
+			});
 		});
 	}
-));
+	));
 
 module.exports = passport;

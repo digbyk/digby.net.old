@@ -3,6 +3,8 @@
 var newrelic = require('newrelic');
 require('dotenv').load();
 
+var db = require('./model');
+
 var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
@@ -33,9 +35,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 var routes = require('./routes');
+app.use('/auth', require('./routes/auth'));
 app.use('/', routes);
 app.use('/test', require('./routes/test'));
-app.use('/auth', require('./routes/auth'));
 
 app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));

@@ -17,11 +17,6 @@ var client = contentful.createClient({
 	resolveLinks: true
 });
 
-client.space()
-	.then(function (space) {
-		console.log(space.name)
-	});
-
 router.get('/', function (req, res) {
 	res.render('test', { user: req.user });
 });

@@ -1,0 +1,13 @@
+{
+  "nodes": [
+    {"id": "red", "name": "digby"},
+    {"id": "yellow", "name": "digby"},
+    {"id": "green", "name": "digby"},
+    {"id": "blue", "name": "digby"}
+  ],
+  "links": [
+    {"source": "red", "target": "yellow"},
+    {"source": "red", "target": "blue"},
+    {"source": "red", "target": "green"}
+  ]
+}
