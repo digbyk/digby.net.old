@@ -21,16 +21,17 @@ passport.use(new GoogleStrategy({
 },
 	function (accessToken, refreshToken, profile, done) {
 		process.nextTick(function () {
-			console.log('>' + accessToken);
 			User.findOne({ email: profile.emails[0].value }, function (err, user) {
 				if (err) { return done(err); }
 				if (!user) {
 					user = new User({
-						email: profile.emails[0].value, 
+						email: profile.emails[0].value,
 						displayName: profile.displayName,
 						photoUrl: profile.photos[0].value
 					});
 				}
+				user.accessToken = accessToken;
+				console.log(accessToken);
 				user.lastLoggedIn = new Date();
 				user.save(function (err) {
 					if (err) {

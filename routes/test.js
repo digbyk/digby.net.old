@@ -18,7 +18,7 @@ var client = contentful.createClient({
 });
 
 router.get('/', function (req, res) {
-	res.render('test', { user: req.user });
+	res.render('test');
 });
 
 router.get('/error/:code', function (req, res) {
@@ -48,7 +48,10 @@ router.get('/content/:id', function (req, res) {
 			console.log(entry);
 			res.render('test', { md: md, entry: entry });
 		});
+});
 
+router.get('/albums', function (req, res) {
+	res.render('test');
 });
 
 module.exports = router;
