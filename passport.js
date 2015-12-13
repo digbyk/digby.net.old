@@ -31,7 +31,6 @@ passport.use(new GoogleStrategy({
 					});
 				}
 				user.accessToken = accessToken;
-				console.log(accessToken);
 				user.lastLoggedIn = new Date();
 				user.save(function (err) {
 					if (err) {

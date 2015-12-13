@@ -24,7 +24,6 @@ router.get('/', function (req, res) {
 router.get('/page/:pageId', function (req, res) {
 	client.entry(req.params.id)
 		.then(function (entry) {
-			console.log(entry);
 			res.render('index', { md: md, entry: entry });
 		});
 });
