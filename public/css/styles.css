@@ -29,6 +29,7 @@ a:hover {
 	text-align: right;
 	padding: 2rem;
 	border: 0px solid red;
+	transform: perspective( 300px ) rotateY( -20deg );
 }
 #nav ul {
 	padding: 0;

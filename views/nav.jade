@@ -6,13 +6,13 @@ section#nav
 		li projects
 		if !user
 			li
-				a(href="/auth/google")
-					img(src="/images/btn_google_signin_dark_normal_web.png" alt="login")
+				a(href="/auth/google") google login
 		else
 			li
-				a(href="/auth/logout" title=user.displayName) logout
+				a(href="/auth/logout", title=user.displayName) logout
 		li
-			a(href="https://twitter.com/digbyk" class="twitter-follow-button" data-show-count="false")
-			script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+			a(href="https://twitter.com/digbyk", title="@digbyk") twitter
 		li
-			iframe(src="https://ghbtns.com/github-btn.html?user=digbyk&type=follow&count=false" frameborder="0" scrolling="0" width="112px" height="20px")
+			a(href="https://github.com/digbyk", title="digbyk") github
+		li
+			a(href="https://uk.linkedin.com/in/digbyknight", title="digbyknight") linkedin
