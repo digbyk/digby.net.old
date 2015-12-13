@@ -7,7 +7,10 @@ router.get('/login', function (req, res) {
 });
 
 router.get('/google',
-	passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.profile.emails.read', 'https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/drive.photos.readonly'] }),
+	passport.authenticate('google', {
+		//accessType: 'offline',
+		scope: ['https://www.googleapis.com/auth/plus.profile.emails.read', 'https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/drive.photos.readonly']
+	}),
 	function (req, res) {
 	});
 

@@ -31,8 +31,8 @@ router.get('/exception', function (req, res) {
 
 router.get('/content', function (req, res) {
 	client.entries({
-		'content_type': 'Page',
-		'fields.path[match]': 'Index'
+		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
+		'fields.path': 'index'
 	}).then(function (entries) {
 		console.log(entries.total);
 		res.render('test', { md: md, entry: entries[0] });

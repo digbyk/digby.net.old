@@ -34,6 +34,13 @@ app.use(passport.session());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(function (req, res, next) {
+	if (req.user) {
+		res.locals.user = req.user;
+	}
+	next();
+})
+
 var routes = require('./routes');
 app.use('/auth', require('./routes/auth'));
 app.use('/', routes);

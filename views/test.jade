@@ -2,6 +2,5 @@ extends layout
 
 block content
 	section#main
-		p www.digby.net test
 		if entry
 			p!= md.render(entry.fields.content)

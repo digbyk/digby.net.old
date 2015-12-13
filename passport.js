@@ -21,30 +21,24 @@ passport.use(new GoogleStrategy({
 },
 	function (accessToken, refreshToken, profile, done) {
 		process.nextTick(function () {
+			console.log('>' + accessToken);
 			User.findOne({ email: profile.emails[0].value }, function (err, user) {
 				if (err) { return done(err); }
 				if (!user) {
-					var user2 = new User({
-						email: profile.emails[0].value, displayName: profile.displayName
+					user = new User({
+						email: profile.emails[0].value, 
+						displayName: profile.displayName,
+						photoUrl: profile.photos[0].value
 					});
-					user2.save(function (err) {
-						if (err) {
-							console.error(err);
-							return done(err);
-						}
-						return done(null, user2);
-					});
-				} else {
-					user.lastLoggedIn = new Date();
-					user.save(function (err) {
-						if (err) {
-							console.error(err);
-							return done(err);
-						}
-						return done(null, user);
-					});
-
 				}
+				user.lastLoggedIn = new Date();
+				user.save(function (err) {
+					if (err) {
+						console.error(err);
+						return done(err);
+					}
+					return done(null, user);
+				});
 			});
 		});
 	}
