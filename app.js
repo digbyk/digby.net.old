@@ -1,7 +1,7 @@
 'use strict';
 
 var newrelic = require('newrelic');
-require('dotenv').load();
+require('dotenv').load({silent: true});
 
 var db = require('./model');
 
