@@ -1,3 +1,6 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 html {
 	height: 100%;
 }
@@ -14,6 +17,7 @@ body {
 	height: 100%;
 	justify-content: center;
 	align-items: center;
+	box-sizing: 0;
 }
 a {
 	color: #ccc;
@@ -24,12 +28,14 @@ a:hover {
 	text-decoration: underline;
 }
 #nav {
-	width: 50%;
+	width: 25%;
+	min-height: 50%;
 	order: 1;
 	text-align: right;
 	padding: 2rem;
-	border: 0px solid red;
-	transform: perspective( 300px ) rotateY( -20deg );
+	background: rgba(25, 25, 25, 0.7);
+	transform-origin: center right;
+	transform: perspective( 400px ) rotateY( -20deg );
 }
 #nav ul {
 	padding: 0;
@@ -43,4 +49,10 @@ a:hover {
 #main {
 	order: 2;
 	flex-grow: 2;
+	padding: 2rem;
+	width: 75%;
+	min-height: 50%;
+	background: rgba(25, 25, 25, 0.3);
+	transform-origin: center left;
+	transform: perspective( 1600px ) rotateY( 20deg );
 }
