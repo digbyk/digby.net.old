@@ -3,16 +3,13 @@ section#nav
 	ul
 		li
 			a(href="/") home
-		li projects
+		li 
+			a(href="/page/projects") projects
+		li
+			a(href="/page/social") social
 		if !user
 			li
 				a(href="/auth/google") google login
 		else
 			li
 				a(href="/auth/logout", title=user.displayName) logout
-		li
-			a(href="https://twitter.com/digbyk", title="@digbyk") twitter
-		li
-			a(href="https://github.com/digbyk", title="digbyk") github
-		li
-			a(href="https://uk.linkedin.com/in/digbyknight", title="digbyknight") linkedin

@@ -18,14 +18,27 @@ var client = contentful.createClient({
 });
 
 router.get('/', function (req, res) {
-	res.render('index', {});
+	client.entries({
+		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
+		'fields.path': 'index'
+	}).then(function (entries) {
+		res.render('index', { md: md, entry: entries[0] });
+	}).catch(function (err) {
+		console.error(err);
+		res.render('index', { md: md, entry: null });
+	})
 });
 
 router.get('/page/:pageId', function (req, res) {
-	client.entry(req.params.id)
-		.then(function (entry) {
-			res.render('index', { md: md, entry: entry });
-		});
+	client.entries({
+		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
+		'fields.path': req.params.pageId
+	}).then(function (entries) {
+		res.render('page', { md: md, entry: entries[0] });
+	}).catch(function (err) {
+		console.error(err);
+		res.render('page', { md: md, entry: null });
+	})
 });
 
 module.exports = router;

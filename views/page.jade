@@ -2,5 +2,6 @@ extends layout
 
 block content
 	section#main
+		h1!= md.render(entry.fields.title)
 		if entry
 			p!= md.render(entry.fields.content)
