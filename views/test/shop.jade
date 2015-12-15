@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+	section#main
+		h1 Shop
+		ul
+			each product in products.data
+				li= product.name
+					ul
+						each sku in product.skus.data
+							li= sku.id

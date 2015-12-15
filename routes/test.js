@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 //var redis = require("redis");
 //var client = redis.createClient();
+
+var stripe = require('stripe')(process.env.STRIPE_KEY);
+
 var contentful = require('contentful');
 var md = require('markdown-it')({
 	html: true,
@@ -18,7 +21,7 @@ var client = contentful.createClient({
 });
 
 router.get('/', function (req, res) {
-	res.render('test');
+	res.render('test/test');
 });
 
 router.get('/error/:code', function (req, res) {
@@ -35,10 +38,10 @@ router.get('/content', function (req, res) {
 		'fields.path': 'index'
 	}).then(function (entries) {
 		console.log(entries.total);
-		res.render('test', { md: md, entry: entries[0] });
+		res.render('test/test', { md: md, entry: entries[0] });
 	}).catch(function (err) {
 		console.error(err);
-		res.render('test', { md: md, entry: null });
+		res.render('test/test', { md: md, entry: null });
 	})
 });
 
@@ -46,12 +49,22 @@ router.get('/content/:id', function (req, res) {
 	client.entry(req.params.id)
 		.then(function (entry) {
 			console.log(entry);
-			res.render('test', { md: md, entry: entry });
+			res.render('test/test', { md: md, entry: entry });
 		});
 });
 
 router.get('/albums', function (req, res) {
-	res.render('test');
+	res.render('test/test');
+});
+
+router.get('/shop', function (req, res) {
+	stripe.products.list().then(function (products) {
+		res.render('test/shop', { products: products });
+	}).catch(function (err) {
+		console.log(err);
+		res.status(500);
+	});
+
 });
 
 module.exports = router;
