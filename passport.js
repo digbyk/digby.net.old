@@ -22,25 +22,27 @@ passport.use(new GoogleStrategy({
 },
 	function (accessToken, refreshToken, profile, done) {
 		process.nextTick(function () {
-			User.findOne({ email: profile.emails[0].value }, function (err, user) {
-				if (err) { return done(err); }
-				if (!user) {
-					user = new User({
-						email: profile.emails[0].value,
-						displayName: profile.displayName,
-						photoUrl: profile.photos[0].value
-					});
-				}
-				user.accessToken = accessToken;
-				user.lastLoggedIn = new Date();
-				user.save(function (err) {
-					if (err) {
-						console.error(err);
-						return done(err);
+			User.findOne({ email: profile.emails[0].value })
+				.then(function (user) {
+					if (!user) {
+						user = new User({
+							email: profile.emails[0].value,
+							displayName: profile.displayName,
+							photoUrl: profile.photos[0].value
+						});
 					}
-					return done(null, user);
+					user.accessToken = accessToken;
+					user.lastLoggedIn = new Date();
+					return user.save();
+				}).then(function (user) {
+					stripe.customers.create({ email: user.email }, function (err, result) {
+						if (err) console.error(err);
+						done(null, user);
+					});
+				}).catch(function (err) {
+					console.error(err);
+					done(err);
 				});
-			});
 		});
 	}
 	));

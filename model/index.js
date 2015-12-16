@@ -1,6 +1,7 @@
 var url = process.env.MONGO_URL;
 
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 mongoose.connect(url, {
 	server: {

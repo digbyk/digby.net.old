@@ -67,4 +67,8 @@ router.get('/shop', function (req, res) {
 
 });
 
+router.get('/okta', function (req, res) {
+	res.render('test/okta', {});
+});
+
 module.exports = router;
