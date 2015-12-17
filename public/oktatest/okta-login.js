@@ -4,16 +4,16 @@ var oktaSignIn = new OktaSignIn({
 	features: {
 		securityImage: false,
 		rememberMe: true,
-		smsRecovery: true,
-		selfServiceUnlock: true
+		smsRecovery: false,
+		selfServiceUnlock: false
 	},
 	helpLinks: {
-		help: 'http://www.sophos.com/custom/help/page',
-		forgotPassword: 'http://acme.example.com/custom/forgot/pass/page',
-		unlock: 'http://acme.example.com/custom/unlock/page',
+		help: 'https://www.sophos.com/custom/help/page',
+		//forgotPassword: 'http://acme.example.com/custom/forgot/pass/page',
+		//unlock: 'http://acme.example.com/custom/unlock/page',
 		custom: [
-			{ text: 'Dehydrated Boulders Support', href: 'http://acme.example.com/support/dehydrated-boulders' },
-			{ text: 'Rocket Sled Questions', href: 'http://acme.example.com/questions/rocket-sled' }
+			{ text: 'Customer sign-up', href: 'https://www.sophos.com/register' },
+			{ text: 'Partner sign-up', href: 'https://www.sophos.com/partners' }
 		]
 	},
 	labels: {
@@ -30,7 +30,15 @@ oktaSignIn.renderEl({ el: '#okta-login-container' },
 	function (res) {
         if (res.status === 'SUCCESS') {
 			console.log('User %s succesfully authenticated %o', res.user.profile.login, res.user);
-			res.session.setCookieAndRedirect('https://test-secure.test.sophos.com/en-us/mysophos/my-account.aspx');
+			//res.session.setCookieAndRedirect('https://test-secure.test.sophos.com/en-us/mysophos/my-account.aspx');
+			res.session.setCookieAndRedirect(getQueryString('ref'));
         }
 	}
     );
+
+var getQueryString = function ( field, url ) {
+    var href = url ? url : window.location.href;
+    var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+    var string = reg.exec(href);
+    return string ? string[1] : null;
+};
