@@ -31,14 +31,20 @@ oktaSignIn.renderEl({ el: '#okta-login-container' },
         if (res.status === 'SUCCESS') {
 			console.log('User %s succesfully authenticated %o', res.user.profile.login, res.user);
 			//res.session.setCookieAndRedirect('https://test-secure.test.sophos.com/en-us/mysophos/my-account.aspx');
-			res.session.setCookieAndRedirect(getQueryString('ref'));
+			console.log(getQueryString('ref'));
+			var ref = getQueryString('ref') !== null ? getQueryString('ref') : 'https://test-secure.test.sophos.com/en-us/mysophos/my-account.aspx';
+			res.session.setCookieAndRedirect(ref);
+        }
+		if (res.status === 'ERROR') {
+			console.log('User failed to login');
+			console.log(getQueryString('ref'));
         }
 	}
     );
 
-var getQueryString = function ( field, url ) {
+var getQueryString = function (field, url) {
     var href = url ? url : window.location.href;
-    var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+    var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
     var string = reg.exec(href);
     return string ? string[1] : null;
 };
