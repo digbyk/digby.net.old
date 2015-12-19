@@ -4,6 +4,7 @@ var router = express.Router();
 //var client = redis.createClient();
 
 var stripe = require('stripe')(process.env.STRIPE_KEY);
+var User = require('../model/user.js');
 
 var contentful = require('contentful');
 var md = require('markdown-it')({
@@ -18,6 +19,33 @@ var client = contentful.createClient({
 	secure: true,
 	host: process.env.CONTENTFUL_HOST,
 	resolveLinks: true
+});
+
+router.use(function (req, res, next) {
+	var user = req.user;
+	if (typeof user.customerId === 'undefined') {
+		console.log('Creating customer');
+		stripe.customers.create({ email: user.email })
+			.then(function (customer) {
+				console.log(customer.id);
+				user.customerId = customer.id;
+				return User.findOneAndUpdate(
+					{ email: user.email },
+					{ customerId: customer.id },
+					{ upsert: true, 'new': true }
+					);
+			}).then(function (user) {
+				console.log(user.displayName);
+				console.log(user.email);
+				console.log(user.customerId);
+				next();
+			}).catch(function (err) {
+				console.log(err);
+				next();
+			});
+	} else {
+		next();
+	}
 });
 
 router.get('/', function (req, res) {
@@ -70,5 +98,12 @@ router.get('/shop', function (req, res) {
 router.get('/okta', function (req, res) {
 	res.render('test/okta', {});
 });
+
+function isAuthenticated(req, res, next) {
+    if (req.user.authenticated) {
+        return next();
+	}
+    res.redirect('/');
+}
 
 module.exports = router;
