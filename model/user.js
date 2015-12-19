@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now()
 	},
-	lastLoggedIn: Date
+	lastLoggedIn: Date,
+	customerId: String
 });
 
 var User = mongoose.model('User', userSchema);
