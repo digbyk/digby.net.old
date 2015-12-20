@@ -22,6 +22,15 @@ var client = contentful.createClient({
 });
 
 router.use(function (req, res, next) {
+	if (req.isAuthenticated()) {
+		next();
+	} else {
+		//req.flash('error', 'You must be logged in to do that.')
+		res.redirect('/auth/google');
+	}
+});
+
+router.use(function (req, res, next) {
 	var user = req.user;
 	if (typeof user.customerId === 'undefined') {
 		console.log('Creating customer');
@@ -98,12 +107,5 @@ router.get('/shop', function (req, res) {
 router.get('/okta', function (req, res) {
 	res.render('test/okta', {});
 });
-
-function isAuthenticated(req, res, next) {
-    if (req.user.authenticated) {
-        return next();
-	}
-    res.redirect('/');
-}
 
 module.exports = router;
