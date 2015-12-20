@@ -17,6 +17,7 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
 var app = express();
+app.locals.newrelic = newrelic;
 
 app.use(helmet());
 

@@ -2,6 +2,7 @@ doctype html
 html(lang="en")
 	head
 		block head
+			!= newrelic.getBrowserTimingHeader()
 			title www.digby.net
 	
 			meta(name='Content-Type', content='text/html; charset=UTF-8')
@@ -11,17 +12,17 @@ html(lang="en")
 			link(rel='stylesheet', href='/css/styles.css')
 			link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto', type='text/css')
 			
-			link(rel='shortcut icon', href='/images/favicon.png', sizes="196x196", type='image/x-icon')
-			link(rel='shortcut icon', href='/images/favicon.png', sizes="128x128", type='image/x-icon')
-			link(rel='apple-touch-icon', href='/images/favicon.png', sizes="128x128", type='image/x-icon')
-			link(rel='apple-touch-icon-precomposed', href='/images/favicon.png', sizes="128x128", type='image/x-icon')
+			link(rel='shortcut icon', href='/images/digby-photo-small.png', sizes="196x196", type='image/x-icon')
+			link(rel='shortcut icon', href='/images/digby-photo-small.png', sizes="128x128", type='image/x-icon')
+			link(rel='apple-touch-icon', href='/images/digby-photo-small.png', sizes="128x128", type='image/x-icon')
+			link(rel='apple-touch-icon-precomposed', href='/images/digby-photo-small.png', sizes="128x128", type='image/x-icon')
 
 	body
 		block nav
 			include nav.jade
 		block content
 		block script
-			script.
+			//script.
 				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
