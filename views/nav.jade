@@ -7,10 +7,14 @@ section#nav
 			a(href="/") home
 		li 
 			a(href="/page/projects") projects
+		li 
+			a(href="/blog") blog
 		li
 			a(href="/page/social") social
 		if !user
 			li
+				a(href="/login") login
+			//li
 				a(href="/auth/google") google login
 		else
 			li

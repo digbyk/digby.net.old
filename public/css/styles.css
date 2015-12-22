@@ -26,6 +26,15 @@ a:hover {
 	color: #fff;
 	text-decoration: underline;
 }
+h1 {
+	font-size: 2rem;
+}
+h2 {
+	font-size: 1.8rem;
+}
+h3 {
+	font-size: 1.6rem;
+}
 section:nth-child(n+2) {
 	min-height: 30rem;
 	width: 100%;
@@ -73,5 +82,8 @@ section:nth-child(n+2) {
 	-transform-origin: center left;
 	-transform: perspective( 1600px ) rotateY( 20deg );
 }
-#nh {
+#main>ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
 }

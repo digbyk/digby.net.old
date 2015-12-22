@@ -2,6 +2,10 @@ var winston = require('winston');
 var express = require('express');
 var router = express.Router();
 
+var RestClient = require('node-rest-client').Client;
+var restClient = new RestClient();
+var moment = require('moment');
+
 var contentful = require('contentful');
 var md = require('markdown-it')({
 	html: true,
@@ -29,6 +33,10 @@ router.get('/', function (req, res) {
 	})
 });
 
+router.get('/login', function (req, res) {
+	res.render('login');
+});
+
 router.get('/page/:pageId', function (req, res) {
 	client.entries({
 		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
@@ -39,6 +47,18 @@ router.get('/page/:pageId', function (req, res) {
 		console.error(err);
 		res.render('page', { md: md, entry: null });
 	})
+});
+
+router.get('/blog', function (req, res) {
+	restClient.get("https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/", function (data, response) {
+		res.render('blog/index', { moment: moment, blog: data });
+	});
+});
+
+router.get('/blog/:id/:slug', function (req, res) {
+	restClient.get("https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/" + req.params.id, function (data, response) {
+		res.render('blog/entry', { moment: moment, entry: data });
+	});
 });
 
 module.exports = router;

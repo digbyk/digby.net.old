@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+	section#main
+		if entry
+			h2!= entry.title
+			p!= moment(entry.date).format('YYYY-MM-DD')
+			div!= entry.content
