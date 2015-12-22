@@ -35,11 +35,6 @@ h2 {
 h3 {
 	font-size: 1.6rem;
 }
-section:nth-child(n+2) {
-	min-height: 30rem;
-	width: 100%;
-	padding: 2rem 4rem;
-}
 #nav {
 	display: flex;
 	flex-direction: row;
@@ -74,6 +69,9 @@ section:nth-child(n+2) {
 	padding: 1rem 1rem;
 }
 #main {
+	min-height: 30rem;
+	width: 100%;
+	padding: 2rem 4rem;
 	order: -1;
 	flex-grow: 2;
 	width: 100%;
