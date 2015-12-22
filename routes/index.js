@@ -34,7 +34,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/login', function (req, res) {
-	res.render('login');
+	res.render('login', {title: 'login'});
 });
 
 router.get('/page/:pageId', function (req, res) {
@@ -42,7 +42,7 @@ router.get('/page/:pageId', function (req, res) {
 		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
 		'fields.path': req.params.pageId
 	}).then(function (entries) {
-		res.render('page', { md: md, entry: entries[0] });
+		res.render('page', { title: entries[0].fields.title, md: md, entry: entries[0] });
 	}).catch(function (err) {
 		console.error(err);
 		res.render('page', { md: md, entry: null });
@@ -51,13 +51,13 @@ router.get('/page/:pageId', function (req, res) {
 
 router.get('/blog', function (req, res) {
 	restClient.get("https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/", function (data, response) {
-		res.render('blog/index', { moment: moment, blog: data });
+		res.render('blog/index', { title: 'blog', moment: moment, blog: data });
 	});
 });
 
 router.get('/blog/:id/:slug', function (req, res) {
 	restClient.get("https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/" + req.params.id, function (data, response) {
-		res.render('blog/entry', { moment: moment, entry: data });
+		res.render('blog/entry', { title: data.title, moment: moment, entry: data });
 	});
 });
 
