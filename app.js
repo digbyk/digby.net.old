@@ -1,7 +1,7 @@
 'use strict';
 
 var newrelic = require('newrelic');
-require('dotenv').load({silent: true});
+require('dotenv').load({ silent: true });
 
 var db = require('./model');
 
@@ -20,6 +20,10 @@ var app = express();
 app.locals.newrelic = newrelic;
 
 app.use(helmet());
+app.use(helmet.hsts({
+	maxAge: 123000,
+	includeSubdomains: true
+}));
 
 app.use(session({
 	store: new RedisStore({ url: process.env.REDIS_URL }),
