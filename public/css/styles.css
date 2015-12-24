@@ -18,6 +18,8 @@ body {
 	box-sizing: 0;
   	font-size: 1.4rem;
 	line-height: 1.5rem;
+	background-image: url(../images/bg.jpg);
+	background-size: cover;
 }
 a {
 	color: #ddd;
@@ -56,7 +58,7 @@ h3 {
 	width: 100%;
 	order: -2;
 	padding: 0rem;
-	background-color: rgba(25, 25, 25, 0.7);
+	background-color: rgba(0, 0, 0, 0.25);
 	-transform-origin: center right;
 	-transform: perspective( 400px ) rotateY( -20deg );
 }
@@ -88,8 +90,6 @@ h3 {
 	order: -1;
 	flex-grow: 2;
 	width: 100%;
-	background-image: url(../images/bg.jpg);
-	background-size: cover;
 	-transform-origin: center left;
 	-transform: perspective( 1600px ) rotateY( 20deg );
 }
@@ -97,4 +97,5 @@ h3 {
 	list-style-type: none;
 	margin: 0;
 	padding-left: 0;
+	line-height: 2rem;
 }
