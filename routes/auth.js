@@ -20,20 +20,6 @@ router.get('/google/callback',
 		res.redirect('/');
 	});
 
-router.get('/saml',
-	passport.authenticate('saml', {
-	}),
-	function (req, res) {
-		res.redirect('/');
-	});
-
-router.post('/saml/callback',
-	passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
-	function (req, res) {
-		console.log('kajsdkljas');
-		res.redirect('/');
-	});
-
 router.get('/logout', function (req, res) {
 	req.logout();
 	res.redirect('/');
