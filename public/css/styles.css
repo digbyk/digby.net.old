@@ -1,12 +1,12 @@
 *, *:before, *:after {
 	box-sizing: border-box;
-	font-family: Roboto, sans-serif;
-	font-weight: 100;
 }
 html {
 	height: 100%;
 }
 body {
+	font-family: Roboto, sans-serif;
+	font-weight: 100;
 	background-color: #222;
 	color: #bbb;
 	display: flex;
@@ -17,14 +17,27 @@ body {
 	align-items: center;
 	box-sizing: 0;
   	font-size: 1.4rem;
+	line-height: 1.5rem;
 }
 a {
 	color: #ddd;
 	text-decoration: none;
 }
+p {
+	margin: 1.5rem 0;
+}
 a:hover {
 	color: #fff;
 	text-decoration: underline;
+}
+pre {
+	font-family: monospace;
+	margin: 1rem;
+	padding: 0.25rem;
+	background-color: rgba(255,255,255,1);
+}
+h1, h2, h3, h4 {
+	font-weight: normal;
 }
 h1 {
 	font-size: 2rem;
