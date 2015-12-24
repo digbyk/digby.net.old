@@ -8,7 +8,7 @@ html {
 }
 body {
 	background-color: #222;
-	color: #ccc;
+	color: #bbb;
 	display: flex;
 	flex-direction: column;
 	padding: 0;
@@ -19,7 +19,7 @@ body {
   	font-size: 1.4rem;
 }
 a {
-	color: #ccc;
+	color: #ddd;
 	text-decoration: none;
 }
 a:hover {

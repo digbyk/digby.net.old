@@ -94,6 +94,14 @@ router.get('/albums', function (req, res) {
 	res.render('test/test');
 });
 
+router.use('/shop', function (req, res, next) {
+	if (!req.user || req.user.roles.indexOf('admin') < 0) {
+		res.status(401).send('Not authorised!');
+	} else {
+		next();
+	}
+});
+
 router.get('/shop', function (req, res) {
 	stripe.products.list().then(function (products) {
 		res.render('test/shop', { products: products });

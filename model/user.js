@@ -10,9 +10,14 @@ var userSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now()
 	},
+	roles: [String],
 	lastLoggedIn: Date,
 	customerId: String
 });
+
+userSchema.methods.hasRole = function(role) {
+	return (roles.indexOf(role) > -1);
+}
 
 var User = mongoose.model('User', userSchema);
 
