@@ -99,3 +99,15 @@ h3 {
 	padding-left: 0;
 	line-height: 2rem;
 }
+@media (max-width: 600px) {
+	#nav ul li {
+		line-height: 1em;
+		padding: 1rem 0.5rem;
+	}
+	#main {
+		padding: 1rem 1rem;
+	}
+	#main>ul {
+		
+	}
+}
