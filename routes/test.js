@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-//var redis = require("redis");
-//var client = redis.createClient();
 
 var stripe = require('stripe')(process.env.STRIPE_KEY);
 var User = require('../model/user.js');

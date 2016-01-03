@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "snyk test && echo \"Error: no test specified\" && exit 1"
   },
   "author": "Digby Knight",
   "license": "MIT",
@@ -38,6 +38,7 @@
     "serve-favicon": "^2.3.0",
     "stripe": "^4.1.0",
     "winston": "^2.1.1",
-    "winston-loggly": "^1.2.0"
+    "winston-loggly": "^1.2.0",
+    "snyk": "^1.8.3"
   }
 }
