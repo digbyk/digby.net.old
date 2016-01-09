@@ -8,11 +8,11 @@ exports.config = {
 	/**
 	 * Array of application names.
 	 */
-	app_name: ['digbynet'],
+	app_name: [process.env.NEWRELIC_APP_NAME],
 	/**
 	 * Your New Relic license key.
 	 */
-	license_key: 'f854ee7aed2627012291960322301c673308f271',
+	license_key: process.env.NEWRELIC_LICENCE_KEY,
 	logging: {
 		/**
 		 * Level at which to log. 'trace' is most useful to New Relic when diagnosing
