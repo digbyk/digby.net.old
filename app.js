@@ -1,7 +1,8 @@
 'use strict';
 
-var newrelic = require('newrelic');
 require('dotenv').load({ silent: true });
+
+var newrelic = require('newrelic');
 
 var db = require('./model');
 
@@ -28,27 +29,23 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-var passport = require('./passport.js');
+var passport = require('./passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(function (req, res, next) {
-	if (req.user) {
-		res.locals.user = req.user;
-	}
-	next();
-})
+app.use(require('./lib/middleware.js'));
 
-var routes = require('./routes');
+app.use('/', require('./routes'));
 app.use('/auth', require('./routes/auth'));
-app.use('/', routes);
 app.use('/test', require('./routes/test'));
+app.use('/status', require('./routes/status'));
+
+app.use(express.static(__dirname + '/public'));
 
 app.set('port', (process.env.PORT || 3000));
-app.use(express.static(__dirname + '/public'));
 
 app.listen(app.get('port'), function () {
 	console.log('Node app is running at localhost:' + app.get('port'))

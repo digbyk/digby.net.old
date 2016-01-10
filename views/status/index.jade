@@ -1,0 +1,22 @@
+extends layout
+
+block append head
+  link(rel='stylesheet', href='/css/status.css')
+block content
+  section#main
+    header
+      h1 Status for www.digby.net
+    ul#statuses
+      li
+        time(datetime='2016-1-9') 9th Jan 2016
+        h1 All systems go
+        p.
+          Nothing to see here
+      li
+        time(datetime='2016-1-8') 8th Jan 2016
+        h1
+          span Temporary downtime
+        p.
+          Tail pork chop filet mignon tongue, fatback porchetta strip steak ham hock jowl kevin. Frankfurter landjaeger tri-tip fatback strip steak, ball tip andouille meatball filet mignon sausage rump pork loin cupim.
+          Pork sirloin drumstick pork chop leberkas cow, ham hock short ribs biltong bacon alcatra porchetta tri-tip kevin. Turkey short loin fatback filet mignon landjaeger t-bone bacon meatloaf bresaola.
+        

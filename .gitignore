@@ -41,4 +41,4 @@ bower_components
 .env
 .vscode
 Thumbs.db
-.snyk
+x.snyk

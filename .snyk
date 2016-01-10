@@ -1,0 +1,15 @@
+ignore:
+  'npm:ms:20151024':
+    - 'node-rest-client > debug > ms':
+        reason: None given
+        expires: '2016-02-09T13:57:17.544Z'
+  'npm:uglify-js:20151024':
+    - 'jade > transformers > uglify-js':
+        reason: None given
+        expires: '2016-02-09T14:00:45.121Z'
+  'npm:uglify-js:20150824':
+    - 'jade > transformers > uglify-js':
+        reason: None given
+        expires: '2016-02-09T14:01:16.271Z'
+patch: {}
+version: v1
