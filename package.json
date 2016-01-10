@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "snyk test"
+    "test": "snyk test && mocha"
   },
   "author": "Digby Knight",
   "license": "MIT",
@@ -40,5 +40,8 @@
     "stripe": "^4.1.0",
     "winston": "^2.1.1",
     "winston-loggly": "^1.2.0"
+  },
+  "devDependencies": {
+    "node-mocks-http": "^1.5.1"
   }
 }
