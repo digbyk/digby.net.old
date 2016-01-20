@@ -4,7 +4,7 @@ require('dotenv').load({ silent: true });
 
 var newrelic = require('newrelic');
 
-var db = require('./model');
+var winston = require('./lib/logging.js');
 
 var path = require('path');
 var express = require('express');
@@ -17,8 +17,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
+var db = require('./model');
+
 var app = express();
-app.locals.newrelic = newrelic;
 
 app.use(helmet());
 
@@ -48,5 +49,5 @@ app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function () {
-	console.log('Node app is running at localhost:' + app.get('port'))
+	winston.log('info', 'Node app is running at localhost:' + app.get('port'))
 });
