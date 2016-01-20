@@ -1,13 +1,13 @@
 require('dotenv').load({ silent: true });
 
-var winston = require('../lib/logging.js');
+var logger = require('../lib/logging.js');
 
-winston.log('info', "Hello World from Node.js again!");
-winston.error('Unknown user', {name: 'digby', 'email': 'REDACTED'});
+logger.log('info', "Hello World from Node.js again!");
+logger.error('Unknown user', {name: 'digby', 'email': 'REDACTED'});
 
 var q = 'logs';
 
-var amqp = require('amqplib').connect(process.env.AMQP_URL);
+var amqp = require('amqplib').connect(process.env.CLOUDAMQP_URL);
 
 // Publisher
 amqp.then(function (conn) {
@@ -26,7 +26,7 @@ amqp.then(function (conn) {
         ch.assertQueue(q);
         ch.consume(q, function (msg) {
             if (msg !== null) {
-                winston.log('info', msg.content.toString());
+                logger.log('info', msg.content.toString());
                 ch.ack(msg);
             }
         });

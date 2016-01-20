@@ -6,18 +6,17 @@ var newrelic = require('newrelic');
 
 var logger = require('./lib/logging.js');
 
+var db = require('./model');
+
 var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
-
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
-
-var db = require('./model');
 
 var app = express();
 
