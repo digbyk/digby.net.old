@@ -1,4 +1,5 @@
-var winston = require('winston');
+var logger = require('../lib/logging.js');
+
 var express = require('express');
 var router = express.Router();
 
@@ -28,7 +29,7 @@ router.get('/', function (req, res) {
 	}).then(function (entries) {
 		res.render('index', { md: md, entry: entries[0] });
 	}).catch(function (err) {
-		console.error(err);
+		logger.error(err);
 		res.render('index', { md: md, entry: null });
 	})
 });
@@ -44,7 +45,7 @@ router.get('/page/:pageId', function (req, res) {
 	}).then(function (entries) {
 		res.render('page', { title: entries[0].fields.title, md: md, entry: entries[0] });
 	}).catch(function (err) {
-		console.error(err);
+		logger.error(err);
 		res.render('page', { md: md, entry: null });
 	})
 });

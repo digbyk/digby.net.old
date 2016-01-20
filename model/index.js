@@ -1,6 +1,6 @@
 var url = process.env.MONGO_URL;
 
-var winston = require('../lib/logging.js');
+var logger = require('../lib/logging.js');
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -12,8 +12,7 @@ mongoose.connect(url, {
 });
 
 mongoose.connection.on('connected', function () {
-    winston.log('info', 'Mongoose connected');
-    console.info('Mongoose connected');
+    logger.log('info', 'Mongoose connected');
 });
 
 mongoose.connection.on('error', function (err) {

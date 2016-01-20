@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+var logger = require('../lib/logging.js');
 var stripe = require('stripe')(process.env.STRIPE_KEY);
 var User = require('../model/user.js');
 
@@ -60,10 +61,12 @@ router.get('/', function (req, res) {
 });
 
 router.get('/error/:code', function (req, res) {
+	logger.error('HTTP error', {code: req.params.code});
 	res.status(req.params.code).send('Something broke!');
 });
 
 router.get('/exception', function (req, res) {
+    logger.error('Exception thrown', {});
 	throw new Error("This is an error");
 });
 

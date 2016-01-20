@@ -1,19 +1,9 @@
 require('dotenv').load({ silent: true });
 
-var winston = require('winston');
-require('winston-loggly');
-
-winston.level = 'silly';
-
-winston.add(winston.transports.Loggly, {
-    token: process.env.LOGGLY_TOKEN,
-    subdomain: process.env.LOGGLY_SUBDOMAIN,
-    tags: ["testing"],
-    json: true,
-    level: process.env.LOGGLY_LEVEL
-});
+var winston = require('../lib/logging.js');
 
 winston.log('info', "Hello World from Node.js again!");
+winston.error('Unknown user', {name: 'digby', 'email': 'REDACTED'});
 
 var q = 'logs';
 
@@ -36,9 +26,7 @@ amqp.then(function (conn) {
         ch.assertQueue(q);
         ch.consume(q, function (msg) {
             if (msg !== null) {
-                console.log(msg.content.toString());
-                winston.log('silly', msg.content.toString());
-
+                winston.log('info', msg.content.toString());
                 ch.ack(msg);
             }
         });

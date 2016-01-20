@@ -4,14 +4,14 @@ require('dotenv').load({ silent: true });
 
 var newrelic = require('newrelic');
 
-var winston = require('./lib/logging.js');
+var logger = require('./lib/logging.js');
 
 var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
 
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -49,5 +49,5 @@ app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function () {
-	winston.log('info', 'Node app is running at localhost:' + app.get('port'))
+	logger.log('info', 'Node app is running at localhost:' + app.get('port'))
 });
