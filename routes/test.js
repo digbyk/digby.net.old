@@ -20,7 +20,7 @@ var client = contentful.createClient({
 	resolveLinks: true
 });
 
-router.use(function (req, res, next) {
+router.use(function isAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		next();
 	} else {
@@ -29,7 +29,7 @@ router.use(function (req, res, next) {
 	}
 });
 
-router.use(function (req, res, next) {
+router.use(function checkStripeAccount(req, res, next) {
 	var user = req.user;
 	if (typeof user.customerId === 'undefined') {
 		console.log('Creating customer');
