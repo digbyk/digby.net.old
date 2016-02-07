@@ -1,17 +1,15 @@
 'use strict';
 
 require('dotenv').load({ silent: true });
-
-var newrelic = require('newrelic');
+require('newrelic');
+require('./model');
 
 var logger = require('./lib/logging.js');
-
-var db = require('./model');
 
 var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -20,6 +18,11 @@ var RedisStore = require('connect-redis')(session);
 
 var app = express();
 
+app.use(cookieParser());
+app.use(morgan('combined'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+//app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(helmet());
 
 app.use(session({
@@ -48,5 +51,5 @@ app.use(express.static(__dirname + '/public'));
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function () {
-	logger.log('info', 'Node app is running at localhost:' + app.get('port'))
+	logger.log('info', 'Node app is running at localhost:' + app.get('port'));
 });
