@@ -32,10 +32,10 @@ router.use(function isAuthenticated(req, res, next) {
 router.use(function checkStripeAccount(req, res, next) {
 	var user = req.user;
 	if (typeof user.customerId === 'undefined') {
-		console.log('Creating customer');
+		logger.log('Creating customer');
 		stripe.customers.create({ email: user.email })
 			.then(function (customer) {
-				console.log(customer.id);
+				logger.log(customer.id);
 				user.customerId = customer.id;
 				return User.findOneAndUpdate(
 					{ email: user.email },
@@ -43,12 +43,12 @@ router.use(function checkStripeAccount(req, res, next) {
 					{ upsert: true, 'new': true }
 					);
 			}).then(function (user) {
-				console.log(user.displayName);
-				console.log(user.email);
-				console.log(user.customerId);
+				logger.log(user.displayName);
+				logger.log(user.email);
+				logger.log(user.customerId);
 				next();
 			}).catch(function (err) {
-				console.log(err);
+				logger.log(err);
 				next();
 			});
 	} else {
@@ -61,13 +61,13 @@ router.get('/', function (req, res) {
 });
 
 router.get('/error/:code', function (req, res) {
-	logger.error('HTTP error', {code: req.params.code});
+	logger.error('HTTP error', { code: req.params.code });
 	res.status(req.params.code).send('Something broke!');
 });
 
 router.get('/exception', function (req, res) {
-    logger.error('Exception thrown', {});
-	throw new Error("This is an error");
+	logger.error('Exception thrown', {});
+	throw new Error('This is an error');
 });
 
 router.get('/content', function (req, res) {
@@ -75,18 +75,18 @@ router.get('/content', function (req, res) {
 		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
 		'fields.path': 'index'
 	}).then(function (entries) {
-		console.log(entries.total);
+		logger.log(entries.total);
 		res.render('test/test', { md: md, entry: entries[0] });
 	}).catch(function (err) {
-		console.error(err);
+		logger.error(err);
 		res.render('test/test', { md: md, entry: null });
-	})
+	});
 });
 
 router.get('/content/:id', function (req, res) {
 	client.entry(req.params.id)
 		.then(function (entry) {
-			console.log(entry);
+			logger.log(entry);
 			res.render('test/test', { md: md, entry: entry });
 		});
 });
@@ -107,7 +107,7 @@ router.get('/shop', function (req, res) {
 	stripe.products.list().then(function (products) {
 		res.render('test/shop', { products: products });
 	}).catch(function (err) {
-		console.log(err);
+		logger.log(err);
 		res.status(500);
 	});
 

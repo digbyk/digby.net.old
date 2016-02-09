@@ -32,7 +32,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-var passport = require('./passport');
+var passport = require('./lib/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -44,6 +44,7 @@ app.use(require('./lib/middleware.js'));
 app.use('/', require('./routes'));
 app.use('/auth', require('./routes/auth'));
 app.use('/test', require('./routes/test'));
+app.use('/shop', require('./routes/shop'));
 app.use('/status', require('./routes/status'));
 
 app.use(express.static(__dirname + '/public'));
