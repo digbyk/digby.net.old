@@ -6,7 +6,9 @@ html {
 }
 body {
 	font-family: Roboto, sans-serif;
+  	font-size: 1.4rem;
 	font-weight: 100;
+	line-height: 1.5rem;
 	background-color: #222;
 	color: #bbb;
 	display: flex;
@@ -16,8 +18,6 @@ body {
 	height: 100%;
 	align-items: center;
 	box-sizing: 0;
-  	font-size: 1.4rem;
-	line-height: 1.5rem;
 	background-image: url(../images/bg.jpg);
 	background-size: cover;
 }
@@ -82,6 +82,9 @@ h3 {
 	line-height: 2em;
 	list-style-type: none;
 	padding: 1rem 1rem;
+}
+#nav img {
+	border-radius: 50%;
 }
 #main {
 	min-height: 30rem;

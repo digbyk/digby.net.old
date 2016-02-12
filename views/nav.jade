@@ -13,9 +13,21 @@ section#nav
 			a(href="/page/social") social
 		if !user
 			li
-				a(href="/login") login
-			//li
-				a(href="/auth/google") google login
+				script(src="https://cdn.auth0.com/js/lock-8.2.min.js")
+				script.
+					var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}');
+					function signin() {
+						lock.show({
+							callbackURL: '#{env.AUTH0_CALLBACK_URL}'
+							, responseType: 'code'
+							, authParams: {
+							scope: 'openid name email picture'
+							}
+						});
+					}
+				a(href="#", onclick="window.signin();") login
 		else
 			li
 				a(href="/auth/logout", title=user.displayName) logout
+			li
+				img(src="#{user.picture}", width="40")

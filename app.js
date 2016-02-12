@@ -1,7 +1,6 @@
 'use strict';
 
 require('dotenv').load({ silent: true });
-require('newrelic');
 require('./model');
 
 var logger = require('./lib/logging.js');
@@ -10,6 +9,7 @@ var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
 //var favicon = require('serve-favicon');
+var passport = require('passport');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -17,6 +17,9 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
 var app = express();
+
+var strategy = require('./lib/auth0');
+passport.use(strategy);
 
 app.use(cookieParser());
 app.use(morgan('combined'));
@@ -32,7 +35,6 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-var passport = require('./lib/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -6,6 +6,15 @@ router.get('/login', function (req, res) {
 	res.render('login', { user: req.user });
 });
 
+router.get('/callback',
+	passport.authenticate('auth0', { failureRedirect: '/login-error' }),
+	function (req, res) {
+		if (!req.user) {
+			throw new Error('user null');
+		}
+		res.redirect('/');
+	});
+
 router.get('/google',
 	passport.authenticate('google', {
 		//accessType: 'offline',
