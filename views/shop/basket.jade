@@ -1,0 +1,34 @@
+extends ../layout
+block script
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js")
+	
+block content
+	section#main
+		h1 Basket
+		h2= customer.email
+		p= customer.metadata.firstName + ' ' + customer.metadata.lastName
+		form(action="/shop/charge" method="POST")
+			table
+				thead
+					tr
+						th Item
+						th Quantity
+						th Cost
+				tbody
+					tr
+						td Marshmallows
+						td 2
+						td 20
+			script(
+				src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				data-key="pk_test_R6xWAr3P1pd9arHAh0T3ybto"
+				data-image="/img/documentation/checkout/marketplace.png"
+				data-name="Waymead"
+				data-email=customer.email
+				data-description="Marshmallows"
+				data-zip-code="true"
+				data-currency="gbp"
+				data-amount="2000"
+				data-allow-remember-me="false"
+				data-shipping-address="false"
+				data-locale="auto")

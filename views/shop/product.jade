@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+	section#main
+		h1 Shop
+		h2= product.name
+		ul
+			each sku in product.skus.data
+				li
+					img(src=sku.image, width=240)

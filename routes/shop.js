@@ -42,12 +42,48 @@ router.use(function isAuthenticated(req, res, next) {
 
 router.get('/', function (req, res) {
 	stripe.products.list().then(function (products) {
-		res.render('test/shop', { products: products });
+		res.render('shop/index', { products: products });
 	}).catch(function (err) {
 		logger.log(err);
 		res.status(500);
 	});
+});
 
+router.get('/basket', function (req, res) {
+	stripe.customers.retrieve(req.user.customerId)
+		.then(function (customer) {
+			logger.log(customer);
+			res.render('shop/basket', { customer: customer });
+		}).catch(function (err) {
+			logger.log(err);
+			res.status(500);
+		});
+});
+
+router.post('/charge', function (req, res) {
+	logger.log(req.user.customerId);
+	stripe.charges.create({
+		amount: 1000, // amount in cents, again
+		currency: 'gbp',
+		customer: req.user.customerId,
+		//source: req.body.stripeToken,
+		description: 'Example charge'
+	}).then(function (charge) {
+		logger.log(charge);
+		res.redirect('/shop/basket');
+	}).catch(function (err) {
+		logger.log(err);
+		res.status(500);
+	});
+});
+
+router.get('/:productId', function (req, res) {
+	stripe.products.retrieve(req.params.productId).then(function (product) {
+		res.render('shop/product', { product: product });
+	}).catch(function (err) {
+		logger.log(err);
+		res.status(500);
+	});
 });
 
 module.exports = router;
