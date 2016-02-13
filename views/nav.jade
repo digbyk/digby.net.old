@@ -18,10 +18,11 @@ section#nav
 					var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}');
 					function signin() {
 						lock.show({
-							callbackURL: '#{env.AUTH0_CALLBACK_URL}'
-							, responseType: 'code'
-							, authParams: {
-							scope: 'openid name email picture'
+							callbackURL: '#{env.AUTH0_CALLBACK_URL}',
+							enableReturnUserExperience: true,
+							responseType: 'code',
+							authParams: {
+								scope: 'openid name email picture'
 							}
 						});
 					}
