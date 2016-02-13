@@ -2,7 +2,7 @@ var logger = require('../lib/logging.js');
 
 var express = require('express');
 var router = express.Router();
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn()
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
 var RestClient = require('node-rest-client').Client;
 var restClient = new RestClient();
@@ -58,17 +58,17 @@ router.get('/page/:pageId', function (req, res) {
 	}).catch(function (err) {
 		logger.error(err);
 		res.render('page', { md: md, entry: null });
-	})
+	});
 });
 
 router.get('/blog', function (req, res) {
-	restClient.get("https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/", function (data, response) {
+	restClient.get('https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/', function (data, response) {
 		res.render('blog/index', { title: 'blog', moment: moment, blog: data });
 	});
 });
 
 router.get('/blog/:id/:slug', function (req, res) {
-	restClient.get("https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/" + req.params.id, function (data, response) {
+	restClient.get('https://public-api.wordpress.com/rest/v1.1/sites/thejoyoftechs.wordpress.com/posts/' + req.params.id, function (data, response) {
 		res.render('blog/entry', { title: data.title, moment: moment, entry: data });
 	});
 });

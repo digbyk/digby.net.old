@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var userSchema = mongoose.Schema({
+var userSchema = Schema({
 	email: String,
 	displayName: String,
 	picture: String,
@@ -16,7 +16,7 @@ var userSchema = mongoose.Schema({
 
 userSchema.methods.hasRole = function(role) {
 	return (roles.indexOf(role) > -1);
-}
+};
 
 var User = mongoose.model('User', userSchema);
 

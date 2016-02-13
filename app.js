@@ -2,6 +2,7 @@
 
 require('dotenv').load({ silent: true });
 require('./model');
+require('./lib/newrelic.js');
 
 var logger = require('./lib/logging.js');
 
@@ -9,18 +10,17 @@ var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
 //var favicon = require('serve-favicon');
-var passport = require('passport');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
-
-var app = express();
-
+var passport = require('passport');
 var strategy = require('./lib/auth0');
+
 passport.use(strategy);
 
+var app = express();
 app.use(cookieParser());
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
