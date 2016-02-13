@@ -8,5 +8,6 @@ block content
 				p= user.displayName
 				p= user.email
 				p= user._raw
-				each role in user.roles
-					p= role
+				if user.roles
+					each role in user.roles
+						p= role
