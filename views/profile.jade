@@ -7,7 +7,7 @@ block content
 				img.round(src="#{user.picture}", width="200") 
 				p= user.displayName
 				p= user.email
-				p= user.app_metadata.customerId
-				if user.app_metadata.roles
-					each role in user.app_metadata.roles
+				p= user._json.app_metadata.customerId
+				if user._json.app_metadata.roles
+					each role in user._json.app_metadata.roles
 						p= role
