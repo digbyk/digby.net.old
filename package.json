@@ -4,8 +4,8 @@
   "description": "My website",
   "main": "app.js",
   "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 1.0.0"
+    "node": ">= 5.6.0",
+    "npm": ">= 3.7.2"
   },
   "repository": {
     "type": "git",

@@ -51,7 +51,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/basket', function (req, res) {
-	stripe.customers.retrieve(req.user.customerId)
+	stripe.customers.retrieve(req.user._json.app_metadata.customerId)
 		.then(function (customer) {
 			logger.log(customer);
 			res.render('shop/basket', { customer: customer });
