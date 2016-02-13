@@ -23,18 +23,12 @@ var client = contentful.createClient({
 	resolveLinks: true
 });
 
-var env = {
-	AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
-	AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
-	AUTH0_CALLBACK_URL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
-};
-
 router.get('/', function (req, res) {
 	client.entries({
 		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
 		'fields.path': 'index'
 	}).then(function (entries) {
-		res.render('index', { env: env, user: req.user, md: md, entry: entries[0] });
+		res.render('index', { md: md, entry: entries[0] });
 	}).catch(function (err) {
 		logger.error(err);
 		res.render('index', { md: md, entry: null });
