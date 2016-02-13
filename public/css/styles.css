@@ -114,7 +114,12 @@ h3 {
 		
 	}
 }
-
+.round {
+	border-radius: 50%;
+}
+.centred {
+	text-align: center;
+}
 /* Let's get this party started */
 ::-webkit-scrollbar {
     width: 12px;

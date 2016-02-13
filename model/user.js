@@ -4,8 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = mongoose.Schema({
 	email: String,
 	displayName: String,
-	accessToken: String,
-	photoUrl: String,
+	picture: String,
 	created: {
 		type: Date,
 		default: Date.now()

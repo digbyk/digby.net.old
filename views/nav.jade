@@ -31,4 +31,5 @@ section#nav
 			li
 				a(href="/auth/logout", title=user.displayName) logout
 			li
-				img(src="#{user.picture}", title="#{user.displayName}", width="40")
+				a(href="/profile")
+					img(src="#{user.picture}", title="#{user.displayName}", width="40")
