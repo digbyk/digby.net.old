@@ -25,7 +25,7 @@ router.use(function isAuthenticated(req, res, next) {
 		next();
 	} else {
 		//req.flash('error', 'You must be logged in to do that.')
-		res.redirect('/auth/google');
+		res.redirect('/');
 	}
 });
 
