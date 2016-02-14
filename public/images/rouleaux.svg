@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:x="http://www.w3.org/1999/xlink">
+  <defs>
+    <pattern id="p1" patternUnits="userSpaceOnUse" width="200" height="200">
+      <image x:href="./globe.jpg" width="200" height="200" />
+    </pattern>
+  </defs>
 	<g>
-		<g transform="rotate(-180 100,96) " stroke="#000" stroke-width="0" id="svg_1">
-			<path fill="#55ACEE" fill-opacity="100%" d="m2,163a196,196 0 0 0 196,0a196,196 0 0 0 -98,-169.741a196,196 0 0 0 -98,169.741z" id="svg_2"/>
+		<g transform="rotate(-180 100,96) " stroke="#55ACEE" stroke-width="6" id="svg_1">
+			<path fill="url(#p1)" fill-opacity="100%" d="m2,163a196,196 0 0 0 196,0a196,196 0 0 0 -98,-169.741a196,196 0 0 0 -98,169.741z" id="svg_2"/>
 		</g>
 	</g>
 </svg>
