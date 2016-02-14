@@ -1,7 +1,6 @@
 extends layout
 
-block content
-	section#main
-		if entry
-			h1!= md.render(entry.fields.title)
-			p!= md.render(entry.fields.content)
+block main
+	if entry
+		h1!= md.render(entry.fields.title)
+		p!= md.render(entry.fields.content)

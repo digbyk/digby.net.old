@@ -9,12 +9,19 @@ var logger = require('./lib/logging.js');
 var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
-//var favicon = require('serve-favicon');
+var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
+
+var i18n = require('i18next');
+var i18nextMiddleware = require('i18next-express-middleware');
+i18n
+  .use(i18nextMiddleware.LanguageDetector)
+  .init({});
+
 var passport = require('passport');
 var strategy = require('./lib/auth0');
 
@@ -25,7 +32,7 @@ app.use(cookieParser());
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/rouleaux.png'));
 app.use(helmet());
 
 app.use(session({

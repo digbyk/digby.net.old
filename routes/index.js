@@ -24,15 +24,7 @@ var client = contentful.createClient({
 });
 
 router.get('/', function (req, res) {
-	client.entries({
-		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
-		'fields.path': 'index'
-	}).then(function (entries) {
-		res.render('index', { md: md, entry: entries[0] });
-	}).catch(function (err) {
-		logger.error(err);
-		res.render('index', { md: md, entry: null });
-	});
+	res.render('index');
 });
 
 router.get('/profile', ensureLoggedIn, function (req, res) {

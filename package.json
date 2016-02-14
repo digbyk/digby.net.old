@@ -29,6 +29,8 @@
     "express-session": "^1.13.0",
     "express-winston": "^0.4.1",
     "helmet": "^0.15.0",
+    "i18next": "^2.1.0",
+    "i18next-express-middleware": "^0.2.0",
     "jade": "^1.11.0",
     "markdown-it": "^5.0.2",
     "moment": "^2.10.6",

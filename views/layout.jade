@@ -18,7 +18,14 @@ html(lang="en")
 			link(rel='apple-touch-icon-precomposed', href='/images/box.png', sizes="128x128", type='image/x-icon')
 
 	body
-		block nav
-			include nav.jade
-		block content
+		#outer
+			#inner
+				#header
+					block header
+						include header
+				#main
+					block main
+				#footer
+					block footer
+						include footer
 		block script
