@@ -10,7 +10,7 @@ body {
 	font-weight: 100;
 	line-height: 1.5rem;
 	background-color: #222;
-	color: #bbb;
+	color: #ddd;
 	padding: 0;
 	margin: 0;
 	height: 100%;
@@ -83,20 +83,19 @@ h3 {
 #nav {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
 	justify-content: space-between;
+	align-items: center;
 }
 #nav h1 {
 	padding: 0;
-	margin: 0;
+	margin: 0.5rem 1rem;	
 }
 #nav ul {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-end;
 	align-items: center;
-	padding: .75rem;
+	padding: 0.5rem;
+	min-height: 4rem;
 	margin: 0;
 	list-style-type: none;
 }
@@ -106,19 +105,24 @@ h3 {
 #nav ul li {
 	line-height: 1em;
 	list-style-type: none;
-	padding: 0.25rem 1rem;
+	padding: 0.5rem 1rem;
 	border: 2px solid transparent;
 	border-radius: 4px;
 	text-shadow: 1px 1px rgba(0,0,0,0.5);
 }
+#nav ul li.toggle {
+	display: none;
+}
 #nav ul li.button {
 	line-height: 1em;
 	list-style-type: none;
-	sborder: 2px solid white;
 	background-color: #55ACEE;
 }
 #nav ul li a:hover {
 	text-decoration: none;
+}
+#nav ul li img {
+	height: 2rem;
 }
 #nav img {
 	border-radius: 50%;
@@ -129,16 +133,32 @@ h3 {
 	padding-left: 0;
 	line-height: 2rem;
 }
-@media (max-width: 600px) {
+#nav input[type=checkbox] {
+	display: none;
+}
+#nav input:checked ~ ul li:not([class~=toggle]) {
+	display: none;
+	transition: max-height 0.8s;
+}
+@media (max-width: 800px) {
+	#nav {
+		flex-direction: column;
+	}
+	#nav ul {
+		flex-direction: column;
+	}
 	#nav ul li {
-		line-height: 1em;
-		padding: 1rem 0.5rem;
+		padding: 0.5rem;
 	}
-	#main {
-		padding: 1rem 1rem;
+	#nav ul li.toggle {
+		display: block;
 	}
-	#main>ul {
-		
+	#nav ul li:not([class~=toggle]) {
+		display: none;
+	}
+	#nav input:checked ~ ul li:not([class~=toggle]) {
+		display: block;
+		transition: max-height 0.8s;
 	}
 }
 .round {
