@@ -30,7 +30,7 @@
 				a(href="#", onclick="window.signin();") login
 		else
 			li
-				a(href="/auth/logout", title=user.displayName) logout
+				a(href="/auth/logout", title="#{user.displayName}") logout
 			li
 				a(href="/profile")
-					img(src="#{user.picture}", title="#{user.displayName}")
+					img(src="#{user.picture}", title="#{user.name}")

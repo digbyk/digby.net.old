@@ -37,7 +37,7 @@ app.use(helmet());
 
 app.use(session({
 	store: new RedisStore({ url: process.env.REDIS_URL }),
-	secret: 'scrt',
+	secret: process.env.REDIS_SESSION_SECRET,
 	resave: true,
 	saveUninitialized: true
 }));
