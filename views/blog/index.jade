@@ -1,12 +1,13 @@
 extends ../layout
 	
-block content
-	section#main
-		if blog
-			ul.blog
-				each post in blog.posts
-					li
-						h2
-							a(href="/blog/" + post.ID + "/" + post.slug)!= post.title
-						span= moment(post.date).format('YYYY-MM-DD')
+block main
+	if blog
+		ul.blog
+			each post in blog.posts
+				li
+					h2
+						a(href="/blog/" + post.ID + "/" + post.slug)!= post.title
+					span= moment(post.date).format('YYYY-MM-DD')
+
+block script
 	script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js")

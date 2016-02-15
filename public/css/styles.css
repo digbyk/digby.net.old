@@ -64,9 +64,15 @@ h3 {
 }
 #main {
 	max-width: 1200px;
+	min-width: 50%;
 	padding: 2rem 4rem;
 	order: 0;
 	flex: 1;
+}
+@media (max-width: 600px) {
+	#main {
+		min-width: 80%;
+	}
 }
 #footer {
 	max-width: 1200px;
