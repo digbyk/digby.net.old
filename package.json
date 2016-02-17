@@ -19,6 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "amqplib": "^0.4.0",
+    "async": "^1.5.2",
+    "auth0": "^2.0.0",
     "body-parser": "^1.14.1",
     "connect-ensure-login": "^0.1.1",
     "connect-redis": "^3.0.1",

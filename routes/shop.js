@@ -4,6 +4,12 @@ var router = express.Router();
 var logger = require('../lib/logging.js');
 var stripe = require('stripe')(process.env.STRIPE_KEY);
 
+var ManagementClient = require('auth0').ManagementClient;
+var auth0 = new ManagementClient({
+	token: process.env.AUTH0_TOKEN,
+	domain: process.env.AUTH0_DOMAIN
+});
+
 router.use(function isAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		next();
@@ -14,32 +20,32 @@ router.use(function isAuthenticated(req, res, next) {
 	}
 });
 
-/*router.use(function checkStripeAccount(req, res, next) {
-	var user = req.user;
-	if (typeof user.customerId === 'undefined') {
-		logger.log('Creating customer');
-		stripe.customers.create({ email: user.email })
-			.then(function (customer) {
-				logger.log(customer.id);
-				user.customerId = customer.id;
-				return User.findOneAndUpdate(
-					{ email: user.email },
-					{ customerId: customer.id },
-					{ upsert: true, 'new': true }
-					);
-			}).then(function (user) {
-				logger.log(user.displayName);
-				logger.log(user.email);
-				logger.log(user.customerId);
-				next();
-			}).catch(function (err) {
-				logger.log(err);
-				next();
-			});
-	} else {
-		next();
-	}
-});*/
+router.use(function checkStripeAccount(req, res, next) {
+	var user;
+	logger.debug('Creating customer');
+	auth0.users.get({ id: req.user.user_id })
+		.then(function (user) {
+			if (typeof user.app_metadata.customerId != 'undefined') throw new Error('Customer already exists');
+			logger.debug(user.app_metadata);
+			return stripe.customers.create({ email: user.email });
+		})
+		.then(function (customer) {
+			logger.debug(customer.id);
+			return auth0.users.update({ id: req.user.user_id }, { 'app_metadata': { 'customerId': customer.id } });
+		})
+		.then(function (user) {
+			logger.debug(user.displayName);
+			logger.debug(user.email);
+			logger.debug(user.customerId);
+			next();
+		}).catch(function (err) {
+			if (err.message != 'Customer already exists') {
+				logger.debug(err);
+				res.redirect('/');
+			}
+			next();
+		});
+});
 
 router.get('/', function (req, res) {
 	stripe.products.list().then(function (products) {

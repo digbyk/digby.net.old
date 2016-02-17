@@ -1,0 +1,14 @@
+extends ../layout
+
+block main
+	h1 All I Want For
+	table
+		thead
+			tr
+				th Gift
+				th For
+		tbody
+			each gift in gifts
+				tr
+					td= gift.name
+					td= gift.owner

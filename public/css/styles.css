@@ -47,6 +47,15 @@ h2 {
 h3 {
 	font-size: 1.6rem;
 }
+table {
+	width: 100%;
+}
+table thead tr {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+table thead tr th {
+	font-weight: normal;
+}
 #outer {
 	height: 100vh;
 }

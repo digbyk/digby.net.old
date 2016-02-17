@@ -1,0 +1,8 @@
+extends ../layout
+
+block main
+	h1 All I Want For
+	ul
+		each list in lists
+			li
+				a(href="aiwf/#{list.id}") #{list.name}
