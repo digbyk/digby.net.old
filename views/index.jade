@@ -1,5 +1,4 @@
 extends layout
 
 block main
-	if entry
-		p!= md.render(entry.fields.content)
+	p.error= error

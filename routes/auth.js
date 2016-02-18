@@ -7,13 +7,11 @@ router.get('/login', function (req, res) {
 });
 
 router.get('/callback',
-	passport.authenticate('auth0', { failureRedirect: '/login-error' }),
-	function (req, res) {
-		if (!req.user) {
-			throw new Error('user null');
-		}
-		res.redirect('/');
-	});
+	passport.authenticate('auth0', {
+		successRedirect: '/',
+		failureRedirect: '/',
+		failureFlash: 'Unauthorised'
+	}));
 
 router.get('/google',
 	passport.authenticate('google', {

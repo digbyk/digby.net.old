@@ -24,15 +24,11 @@ var client = contentful.createClient({
 });
 
 router.get('/', function (req, res) {
-	res.render('index');
+	res.render('index', { error: req.flash('error') });
 });
 
 router.get('/profile', ensureLoggedIn, function (req, res) {
 	res.render('profile', { user: req.user });
-});
-
-router.get('/login', function (req, res) {
-	res.render('login', { title: 'login' });
 });
 
 router.get('/page/:pageId', function (req, res) {

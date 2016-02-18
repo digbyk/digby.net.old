@@ -10,6 +10,7 @@ var path = require('path');
 var express = require('express');
 var helmet = require('helmet');
 var favicon = require('serve-favicon');
+var flash = require('connect-flash');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -32,7 +33,7 @@ app.use(cookieParser());
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(favicon(__dirname + '/public/images/rouleaux.png'));
+app.use(favicon(__dirname + '/public/images/rouleaux2.png'));
 app.use(helmet());
 
 app.use(session({
@@ -41,6 +42,7 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
