@@ -93,12 +93,15 @@ table thead tr th {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
+	align-items: top;
+	height: 4rem;
 }
 #nav img.logo {
 	padding: 0;
 	margin: 0.5rem;
-	height: 4rem;
+	height: 5rem;
+	
+	overflow: visible;
 }
 #nav ul {
 	display: flex;
