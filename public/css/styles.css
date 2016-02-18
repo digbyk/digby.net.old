@@ -95,9 +95,10 @@ table thead tr th {
 	justify-content: space-between;
 	align-items: center;
 }
-#nav h1 {
+#nav img.logo {
 	padding: 0;
-	margin: 1rem 1rem;	
+	margin: 0.5rem;
+	height: 4rem;
 }
 #nav ul {
 	display: flex;
@@ -131,9 +132,7 @@ table thead tr th {
 	text-decoration: none;
 }
 #nav ul li img {
-	height: 2rem;
-}
-#nav img {
+	height: 3rem;
 	border-radius: 50%;
 }
 #main>ul {
