@@ -96,6 +96,9 @@ table thead tr th {
 	align-items: top;
 	min-height: 4rem;
 }
+#nav label {
+	cursor: pointer;
+}
 #nav img.logo {
 	padding: 0;
 	margin: 0.5rem;
@@ -151,12 +154,13 @@ table thead tr th {
 	display: none;
 	transition: max-height 0.8s;
 }
-@media (max-width: 800px) {
+@media (max-width: 600px) {
 	#nav {
 		flex-direction: column;
 	}
-	#nav ul {
+	#nav ul, #nav a {
 		flex-direction: column;
+		text-align: center;
 	}
 	#nav ul li {
 		padding: 0.5rem;
@@ -169,7 +173,6 @@ table thead tr th {
 	}
 	#nav input:checked ~ ul li:not([class~=toggle]) {
 		display: block;
-		transition: max-height 0.8s;
 	}
 }
 .round {
