@@ -21,7 +21,6 @@ router.use(function isAuthenticated(req, res, next) {
 });
 
 router.use(function checkStripeAccount(req, res, next) {
-	var user;
 	logger.debug('Creating customer');
 	auth0.users.get({ id: req.user.user_id })
 		.then(function (user) {
