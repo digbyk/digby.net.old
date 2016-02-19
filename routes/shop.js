@@ -57,7 +57,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/basket', function (req, res) {
-	stripe.customers.retrieve(req.user._json.app_metadata.customerId)
+	stripe.customers.retrieve(req.user.app_metadata.customerId)
 		.then(function (customer) {
 			logger.log(customer);
 			res.render('shop/basket', { customer: customer });
@@ -68,11 +68,11 @@ router.get('/basket', function (req, res) {
 });
 
 router.post('/charge', function (req, res) {
-	logger.log(req.user._json.app_metadata.customerId);
+	logger.log(req.user.app_metadata.customerId);
 	stripe.charges.create({
 		amount: 1000, // amount in cents, again
 		currency: 'gbp',
-		customer: req.user._json.app_metadata.customerId,
+		customer: req.user.app_metadata.customerId,
 		//source: req.body.stripeToken,
 		description: 'Example charge'
 	}).then(function (charge) {

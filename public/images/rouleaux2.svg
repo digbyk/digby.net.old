@@ -44,7 +44,7 @@
      id="namedview3370"
      showgrid="false"
      inkscape:zoom="1.3010765"
-     inkscape:cx="137.35484"
+     inkscape:cx="116.98709"
      inkscape:cy="78.044725"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -52,6 +52,54 @@
      inkscape:current-layer="svg3359" />
   <defs
      id="defs3361">
+    <linearGradient
+       id="linearGradient5785"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0"
+         id="stop5787" />
+      <stop
+         style="stop-color:#0055ac;stop-opacity:0.93333334"
+         offset="1"
+         id="stop5789" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5779">
+      <stop
+         id="stop5781"
+         offset="0"
+         style="stop-color:#ffffff;stop-opacity:1" />
+      <stop
+         id="stop5783"
+         offset="1"
+         style="stop-color:#0055ac;stop-opacity:0.93333334" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5769"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="0"
+         id="stop5771" />
+      <stop
+         style="stop-color:#0055ac;stop-opacity:0.93333334"
+         offset="1"
+         id="stop5773" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5749">
+      <stop
+         id="stop5753"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:0;" />
+      <stop
+         id="stop5751"
+         offset="1"
+         style="stop-color:#0055ac;stop-opacity:0.93333334" />
+    </linearGradient>
     <linearGradient
        id="linearGradient5675"
        osb:paint="solid">
@@ -62,7 +110,7 @@
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
-       id="f">
+       id="glow">
       <stop
          style="stop-color:#000000;stop-opacity:1;"
          offset="0"
@@ -86,7 +134,7 @@
     </pattern>
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#f"
+       xlink:href="#glow"
        id="linearGradient4184"
        x1="37.856668"
        y1="89.439117"
@@ -94,20 +142,58 @@
        y2="89.982597"
        gradientUnits="userSpaceOnUse"
        gradientTransform="translate(20.923913,0.27173913)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5769"
+       id="linearGradient5755"
+       x1="-184.76842"
+       y1="78.451752"
+       x2="164.18187"
+       y2="79.220345"
+       gradientUnits="userSpaceOnUse"
+       spreadMethod="repeat" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5749"
+       id="linearGradient5757"
+       x1="-184.76842"
+       y1="78.451752"
+       x2="164.18187"
+       y2="79.220345"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5779"
+       id="linearGradient5775"
+       gradientUnits="userSpaceOnUse"
+       spreadMethod="repeat"
+       x1="-200.90891"
+       y1="76.145966"
+       x2="164.18187"
+       y2="79.220345" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5785"
+       id="linearGradient5777"
+       gradientUnits="userSpaceOnUse"
+       x1="-200.90891"
+       y1="76.145966"
+       x2="164.18187"
+       y2="79.220345" />
   </defs>
   <g
      id="g3366"
-     style="fill-opacity:0.93333334;fill:#0055ac">
+     style="fill-opacity:0.93333334;fill:url(#linearGradient5757);stroke:url(#linearGradient5755)">
     <g
        transform="rotate(-180 100,96) "
        id="svg_1"
-       style="fill-opacity:0.93333334;fill:#0055ac"
+       style="fill-opacity:0.93333334;fill:url(#linearGradient5757);stroke:url(#linearGradient5755)"
        stroke-width="0"
        stroke="#55ACEE">
       <path
          d="m2,163a196,196 0 0 0 196,0a196,196 0 0 0 -98,-169.741a196,196 0 0 0 -98,169.741z"
          id="svg_2"
-         style="fill-opacity:0.93333334;fill:#0055ac"
+         style="fill-opacity:0.93333334;fill:url(#linearGradient5777);stroke:url(#linearGradient5775)"
          fill-opacity="100%"
          fill="#55ACEE" />
     </g>

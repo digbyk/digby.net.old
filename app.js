@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(favicon(__dirname + '/public/images/rouleaux2.png'));
+app.use(favicon(__dirname + '/public/images/waymead.png'));
 app.use(helmet());
 
 app.use(session({
