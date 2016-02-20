@@ -51,9 +51,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="73.711449"
-     inkscape:cy="109.24719"
+     inkscape:zoom="0.35"
+     inkscape:cx="-822.38181"
+     inkscape:cy="-541.8617"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -102,11 +102,11 @@
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="level4"
-       width="70"
+       width="60"
        height="20"
-       x="65"
+       x="70"
        y="907.36218"
-       rx="8.75"
+       rx="7.5"
        ry="10" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
