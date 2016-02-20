@@ -22,7 +22,9 @@
 						lock.show({
 							callbackURL: '#{env.AUTH0_CALLBACK_URL}',
 							enableReturnUserExperience: true,
+							icon: '/images/waymead.svg',
 							responseType: 'code',
+							socialBigButtons: true,
 							authParams: {
 								scope: 'openid name email picture'
 							}
