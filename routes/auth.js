@@ -9,7 +9,7 @@ router.get('/login', function (req, res) {
 });
 
 router.get('/callback',
-	passport.authenticate('auth0'), function (req, res) {
+	passport.authenticate('auth0'), (req, res) => {
 		let returnTo = req.session.redirectTo || '/';
 		delete req.session.redirectTo;
 		res.redirect(returnTo);	
