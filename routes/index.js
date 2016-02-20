@@ -27,6 +27,14 @@ router.get('/', function (req, res) {
 	res.render('index', { error: req.flash('error') });
 });
 
+router.get('/login', function (req, res) {
+	res.render('login', {
+		error: req.flash('error'),
+		ret: req.flash('ret', req.session.redirectTo),
+		redirectTo: req.session.redirectTo
+	});
+});
+
 router.get('/profile', ensureLoggedIn, function (req, res) {
 	res.render('profile', { user: req.user });
 });

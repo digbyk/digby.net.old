@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
@@ -7,15 +9,14 @@ router.get('/login', function (req, res) {
 });
 
 router.get('/callback',
-	passport.authenticate('auth0', {
-		successRedirect: '/',
-		failureRedirect: '/',
-		failureFlash: 'Unauthorised'
-	}));
+	passport.authenticate('auth0'), function (req, res) {
+		let returnTo = req.session.redirectTo || '/';
+		delete req.session.redirectTo;
+		res.redirect(returnTo);	
+	});
 
 router.get('/google',
 	passport.authenticate('google', {
-		//accessType: 'offline',
 		scope: ['https://www.googleapis.com/auth/plus.profile.emails.read', 'https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/drive.photos.readonly']
 	}),
 	function (req, res) {

@@ -6,5 +6,7 @@ block main
 		each product in products.data
 			li
 				h2= product.name
-				a(href="/shop/"+product.id)
-					img(src=product.images[0], width=200)
+				ul
+					each sku in product.skus.data
+						li
+							img(src=sku.image, width=240)
