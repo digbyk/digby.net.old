@@ -6,12 +6,14 @@ block main
 		script.
 			var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}');
 			function signin() {
-				lock.show({
+				lock.showSignin({
 					callbackURL: '#{env.AUTH0_CALLBACK_URL}',
 					enableReturnUserExperience: true,
 					icon: '/images/waymead.svg',
 					responseType: 'code',
 					socialBigButtons: true,
+					closable: true,
+					sso: true,
 					authParams: {
 						scope: 'openid name email picture'
 					}
