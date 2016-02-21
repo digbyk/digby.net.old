@@ -1,4 +1,4 @@
-var contentService = require('../lib/contentService.js');
+//var contentService = require('../lib/contentService.js');
 
 describe('ContentService tests', function () {
   describe('#get()', function () {
