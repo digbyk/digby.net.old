@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en-GB">
+
+<head>
+	<meta charset=utf-8>
+	<title>Are we nearly there yet?</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body>
+	<div id="outer">
+		<div id="main">
+			<input type="text" name="destination" id="destination" placeholder="destination"/>
+			<input type="text" name="answer" id="answer" placeholder=""/>
+			<div id="map"></div>
+			<input type="button" onclick="calcToDestination()" value="Are We Nearly There Yet?" />
+		</div>
+	</div>
+	<script src="maps.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO0v4dam4kjZ7BzwaIknxaOd8yiZyhl9M&callback=initMap"
+	type="text/javascript"></script>
+</body>
+
+</html>
