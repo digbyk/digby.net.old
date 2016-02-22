@@ -1,10 +1,17 @@
 var map;
+var originMarker;
+var destMarker;
 
 function initMap() {
 	navigator.geolocation.getCurrentPosition(function (position) {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: { lat: position.coords.latitude, lng: position.coords.longitude },
 			zoom: 12
+		});
+		originMarker = new google.maps.Marker({
+			position: { lat: position.coords.latitude, lng: position.coords.longitude },
+			map: map,
+			title: 'You are here'
 		});
 	});
 	//var watchID = navigator.geolocation.watchPosition(function(position) {
@@ -13,7 +20,7 @@ function initMap() {
 }
 function calcToDestination() {
 	navigator.geolocation.getCurrentPosition(function (position) {
-		map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude }); 
+		map.panTo({ lat: position.coords.latitude, lng: position.coords.longitude });
 		var origin = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		var destination = document.getElementById('destination').value;
 		map.setCenter(origin);
