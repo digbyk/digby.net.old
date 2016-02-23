@@ -1,10 +1,10 @@
 extends ../layout
 
+block append head
+	link(rel='stylesheet', href='/css/aiwf.css')
+	
 block main
-	link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css')
 	h1 All I Want For
-	select#members
-		option(value="digby@digby.net") digby@digby.net
 	table
 		thead
 			tr
@@ -15,13 +15,4 @@ block main
 				tr
 					td= gift.name
 					td= gift.owner
-		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js")
-		script(src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js")
-		script.
-			function modesel() {
-				$('#members').select2({
-					tags: true,
-					tokenSeparators: [',', ' ']
-				});
-			};
-			window.onload = modesel;
+		script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js')
