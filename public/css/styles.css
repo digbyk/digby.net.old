@@ -80,7 +80,7 @@ table thead tr th {
 }
 @media (max-width: 600px) {
 	#main {
-		min-width: 80%;
+		min-width: 100%;
 	}
 }
 #footer {

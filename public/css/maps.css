@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 #map {
-    min-height: 300px;
+    min-height: 400px;
     flex: 3;
     background-color: gray;
 }
@@ -22,7 +22,7 @@
 }
 input {
 	width: 100%;
-	font-size: 1rem;
+	font-size: 1.6rem;
 	text-align: center;
 	margin: 0.1rem;
 }
