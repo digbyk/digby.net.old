@@ -39,9 +39,9 @@ function calcToDestination() {
 			var distance = response.rows[0].elements[0].distance;
 			var duration = response.rows[0].elements[0].duration;
 			if (Number(duration.value)/60 <= 15) {
-				document.getElementById('answer').style.backgroundColor = '#ffff00';
-			} else if (Number(duration.value)/60 <= 30) {
 				document.getElementById('answer').style.backgroundColor = '#00ff00';
+			} else if (Number(duration.value)/60 <= 30) {
+				document.getElementById('answer').style.backgroundColor = '#ffff00';
 			} else {
 				document.getElementById('answer').style.backgroundColor = '#ff0000';
 			}
