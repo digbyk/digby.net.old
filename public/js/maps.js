@@ -1,24 +1,24 @@
 var map;
-var originMarker;
-var destMarker;
+var directionsService;
+var directionsDisplay;
 
 function initMap() {
+	directionsService = new google.maps.DirectionsService;
+	directionsDisplay = new google.maps.DirectionsRenderer;
 	navigator.geolocation.getCurrentPosition(function (position) {
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: { lat: position.coords.latitude, lng: position.coords.longitude },
 			zoom: 10
 		});
-		originMarker = new google.maps.Marker({
-			position: { lat: position.coords.latitude, lng: position.coords.longitude },
-			map: map,
-			title: 'You are here'
-		});
 	});
+
 	//var watchID = navigator.geolocation.watchPosition(function(position) {
 	//	map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude }); 
 	//});
 }
 function calcToDestination() {
+	directionsDisplay.setMap(null);
+	directionsDisplay.setMap(map);
 	navigator.geolocation.getCurrentPosition(function (position) {
 		map.panTo({ lat: position.coords.latitude, lng: position.coords.longitude });
 		var origin = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -35,26 +35,35 @@ function calcToDestination() {
 			avoidHighways: false,
 			avoidTolls: false,
 		}, function (response, status) {
-			console.log(response);
 			var distance = response.rows[0].elements[0].distance;
 			var duration = response.rows[0].elements[0].duration;
 			var button = document.getElementById('button');
-			if (Number(duration.value)/60 <= 15) {
+			if (Number(duration.value) / 60 <= 15) {
 				button.style.color = '#00ff00';
-			} else if (Number(duration.value)/60 <= 30) {
+			} else if (Number(duration.value) / 60 <= 30) {
 				button.style.color = '#ffff00';
 			} else {
 				button.style.color = '#ff0000';
 			}
 			button.value = duration.text + ' / ' + distance.text;
-			setTimeout(function() {
+			setTimeout(function () {
 				button.style.color = '#000000';
 				button.value = 'Are we nearly there yet?';
 			}, 5000);
 		});
+		calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination);
 	});
 }
-function calc(position) {
-
-
+function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination) {
+	directionsService.route({
+		origin: origin,
+		destination: destination,
+		travelMode: google.maps.TravelMode.DRIVING
+	}, function (response, status) {
+		if (status === google.maps.DirectionsStatus.OK) {
+			directionsDisplay.setDirections(response);
+		} else {
+			window.alert('Directions request failed due to ' + status);
+		}
+	});
 }
