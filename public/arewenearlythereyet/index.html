@@ -5,16 +5,19 @@
 	<meta charset=utf-8>
 	<title>Are we nearly there yet?</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto" type="text/css">
 	<link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
 <body>
 	<div id="outer">
 		<div id="main">
-			<input type="text" name="destination" id="destination" placeholder="destination"/>
-			<input type="text" name="answer" id="answer" placeholder=""/>
 			<div id="map"></div>
-			<input type="button" onclick="calcToDestination()" value="Are We Nearly There Yet?" />
+			<div id="panel">
+				<input type="text" name="destination" id="destination" placeholder="destination" autocomplete="off" />
+				<input type="text" name="answer" id="answer" placeholder="" />
+				<input type="button" id="button" onclick="calcToDestination()" value="Are We Nearly There Yet?" />
+			</div>
 		</div>
 	</div>
 	<script src="maps.js"></script>
