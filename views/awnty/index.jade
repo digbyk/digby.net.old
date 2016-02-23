@@ -1,0 +1,15 @@
+extends ../layout
+
+block append head
+	link(rel='stylesheet', href='/css/maps.css')
+	
+block main
+	#awnty
+		#panel
+			input#destination(type='text', name='destination', placeholder='destination', autocomplete='off')
+			input#button(type='button', onclick='calcToDestination()', value='Are We Nearly There Yet?')
+		#map
+block script
+	script(src="/js/maps.js")
+	script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBO0v4dam4kjZ7BzwaIknxaOd8yiZyhl9M&callback=initMap', type='text/javascript')
+	

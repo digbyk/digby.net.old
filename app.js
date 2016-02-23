@@ -58,6 +58,7 @@ app.use('/test', require('./routes/test'));
 app.use('/shop', require('./routes/shop'));
 app.use('/status', require('./routes/status'));
 app.use('/aiwf', require('./routes/aiwf'));
+app.use('/arewenearlythereyet', require('./routes/awnty'));
 
 app.use(express.static(__dirname + '/public'));
 
