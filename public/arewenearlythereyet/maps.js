@@ -35,7 +35,15 @@ function calcToDestination() {
 			avoidHighways: false,
 			avoidTolls: false,
 		}, function (response, status) {
-			document.getElementById('answer').value = response.rows[0].elements[0].duration.text;
+			console.log(response);
+			var distance = response.rows[0].elements[0].distance;
+			var duration = response.rows[0].elements[0].duration;
+			if (Number(duration.value)/60 <= 30) {
+				document.getElementById('answer').style.backgroundColor = '#00ff00';
+			} else {
+				document.getElementById('answer').style.backgroundColor = '#ff0000';
+			}
+			document.getElementById('answer').value = duration.text + ' / ' + distance.text;
 		});
 	});
 }
