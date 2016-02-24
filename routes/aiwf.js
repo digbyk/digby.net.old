@@ -27,4 +27,14 @@ router.get('/:listId', ensureLoggedIn, function (req, res) {
 		});
 });
 
+router.get('/:listId/edit', ensureLoggedIn, function (req, res) {
+	Gift.find({ list: req.params.listId })
+		.then(function (gifts) {
+			res.render('aiwf/list-edit', { gifts: gifts });
+		})
+		.catch(function (err) {
+			logger.error(err);
+		});
+});
+
 module.exports = router;

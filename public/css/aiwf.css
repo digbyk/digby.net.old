@@ -1,5 +1,11 @@
-select {
-	width: 100%;
+label {
+	display: block;
+	width: 30rem;
+}
+label input, label select {
+	width: 300px;
+	font-size: 1.4rem;
+	border-radius: 5px;
 }
 .selection {
 	color: black;
