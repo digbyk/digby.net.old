@@ -1,3 +1,9 @@
+#main {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	min-width: 100%;
+}
 #awnty {
 	height: 100%;
 	width: 100%;
@@ -9,13 +15,16 @@
     flex: 3;
     background-color: gray;
 }
+#header, #footer {
+	display: none;
+}
 #panel {
+	z-index: 10;
 	width: 100%;
 	background-color: #ccc;
  	margin: 0 auto;
 	font-size: 1rem;
     text-align: center;	
-	flex: 1;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
