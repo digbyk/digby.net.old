@@ -41,7 +41,7 @@ function calcToDestination() {
 			if (Number(duration.value) / 60 <= 15) {
 				button.style.color = '#00ff00';
 			} else if (Number(duration.value) / 60 <= 30) {
-				button.style.color = '#ffff00';
+				button.style.color = '#aaaa00';
 			} else {
 				button.style.color = '#ff0000';
 			}
