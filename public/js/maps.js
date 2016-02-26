@@ -1,3 +1,4 @@
+/* global google */
 var map;
 var directionsService;
 var directionsDisplay;
@@ -33,7 +34,7 @@ function calcToDestination() {
 			//drivingOptions: DrivingOptions,
 			unitSystem: google.maps.UnitSystem.IMPERIAL,
 			avoidHighways: false,
-			avoidTolls: false,
+			avoidTolls: false
 		}, function (response, status) {
 			var distance = response.rows[0].elements[0].distance;
 			var duration = response.rows[0].elements[0].duration;
