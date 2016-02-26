@@ -55,6 +55,7 @@ function calcToDestination() {
 		calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination);
 	});
 }
+
 function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination) {
 	directionsService.route({
 		origin: origin,

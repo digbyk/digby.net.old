@@ -4,14 +4,6 @@ body,input,select,textarea {
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-html {
-
-}
-
-html.no-cssgradients {
-
-}
-
 .ie6 html {
 	height: 100%;
 }
@@ -113,7 +105,7 @@ tr.boughtByMe .buyButton {
 	display: none;
 }
 
-tr:not (.boughtByMe ) .returnButton {
+tr:not(.boughtByMe) .returnButton {
 	display: none;
 }
 
@@ -140,7 +132,6 @@ p:empty {
 
 .banner img {
 	width: 100%;
-	xmax-width: 600px;
 }
 
 th[data-sort] {
