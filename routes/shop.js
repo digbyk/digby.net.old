@@ -2,6 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
 var logger = require('../lib/logging.js');
 var stripe = require('stripe')(process.env.STRIPE_KEY);
@@ -12,17 +13,7 @@ var auth0 = new ManagementClient({
 	domain: process.env.AUTH0_DOMAIN
 });
 
-router.use((req, res, next) => {
-	if (req.isAuthenticated()) {
-		next();
-	} else {
-		console.log(req.path);
-		req.session.redirectTo = req.baseUrl + req.path;
-		res.redirect('/login');
-	}
-});
-
-router.use((req, res, next) => {
+router.use(ensureLoggedIn, (req, res, next) => {
 	logger.debug('Creating customer');
 	auth0.users.get({ id: req.user.user_id })
 		.then(user => {
@@ -48,7 +39,7 @@ router.use((req, res, next) => {
 		});
 });
 
-router.get('/', (req, res) => {
+router.get('/', ensureLoggedIn, (req, res) => {
 	stripe.products.list().then(products => {
 		res.render('shop/index', { products: products });
 	}).catch(err => {
@@ -57,7 +48,7 @@ router.get('/', (req, res) => {
 	});
 });
 
-router.get('/basket', (req, res) => {
+router.get('/basket', ensureLoggedIn, (req, res) => {
 	stripe.customers.retrieve(req.user.app_metadata.customerId)
 		.then(function (customer) {
 			logger.log(customer);
@@ -68,7 +59,7 @@ router.get('/basket', (req, res) => {
 		});
 });
 
-router.post('/charge', (req, res) => {
+router.post('/charge', ensureLoggedIn, (req, res) => {
 	logger.log(req.user.app_metadata.customerId);
 	stripe.charges.create({
 		amount: 1000, // amount in cents, again
@@ -85,7 +76,7 @@ router.post('/charge', (req, res) => {
 	});
 });
 
-router.get('/:productId', (req, res) => {
+router.get('/:productId', ensureLoggedIn, (req, res) => {
 	stripe.products.retrieve(req.params.productId).then(function (product) {
 		res.render('shop/product', { product: product });
 	}).catch(err => {

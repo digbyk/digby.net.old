@@ -8,11 +8,16 @@ router.get('/login', function (req, res) {
 	res.render('login', { user: req.user });
 });
 
+router.get('/login2',
+	passport.authenticate('auth0', {}), function (req, res) {
+		res.redirect('/');
+	});
+
 router.get('/callback',
 	passport.authenticate('auth0'), (req, res) => {
-		let returnTo = req.session.redirectTo || '/';
-		delete req.session.redirectTo;
-		res.redirect(returnTo);	
+		let returnTo = req.session.returnTo || '/';
+		delete req.session.returnTo;
+		res.redirect(returnTo);
 	});
 
 router.get('/google',

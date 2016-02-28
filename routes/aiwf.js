@@ -6,6 +6,7 @@ var Gift = require('../model/aiwf.js').Gift;
 
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
@@ -13,8 +14,10 @@ router.get('/', ensureLoggedIn, function (req, res) {
 	List.find({ members: req.user.email })
 		.then(function (lists) {
 			res.render('aiwf/index', { lists: lists });
-		}
-			);
+		})
+		.catch(function (err) {
+			logger.error(err);
+		});
 });
 
 router.get('/:listId', ensureLoggedIn, function (req, res) {

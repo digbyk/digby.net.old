@@ -29,33 +29,6 @@ router.use(function isAuthenticated(req, res, next) {
 	}
 });
 
-router.use(function checkStripeAccount(req, res, next) {
-	var user = req.user;
-	if (typeof user.customerId === 'undefined') {
-		logger.log('Creating customer');
-		stripe.customers.create({ email: user.email })
-			.then(function (customer) {
-				logger.log(customer.id);
-				user.customerId = customer.id;
-				return User.findOneAndUpdate(
-					{ email: user.email },
-					{ customerId: customer.id },
-					{ upsert: true, 'new': true }
-					);
-			}).then(function (user) {
-				logger.log(user.displayName);
-				logger.log(user.email);
-				logger.log(user.customerId);
-				next();
-			}).catch(function (err) {
-				logger.log(err);
-				next();
-			});
-	} else {
-		next();
-	}
-});
-
 router.get('/', function (req, res) {
 	res.render('test/test');
 });

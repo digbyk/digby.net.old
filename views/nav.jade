@@ -1,7 +1,7 @@
 #nav
 	input(type="checkbox", id="show-menu", role="button")
 	a(href="/")
-		img.logo(src="/images/waymead.svg")
+		img.logo(src="/images/logo.png")
 	ul
 		li.toggle 
 			label(for="show-menu") menu
@@ -33,7 +33,7 @@
 				a(href="/login") login
 		else
 			li
-				a(href="/auth/logout", title="#{user.displayName}") logout
+				a(href="/logout") logout
 			li
 				a(href="/profile")
 					img(src="#{user.picture}", title="#{user.name}")

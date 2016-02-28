@@ -30,9 +30,14 @@ router.get('/', function (req, res) {
 router.get('/login', function (req, res) {
 	res.render('login', {
 		error: req.flash('error'),
-		ret: req.flash('ret', req.session.redirectTo),
+		returnTo: req.flash('ret', req.session.returnTo),
 		redirectTo: req.session.redirectTo
 	});
+});
+
+router.get('/logout', function (req, res) {
+	req.logout();
+	res.redirect('/');
 });
 
 router.get('/profile', ensureLoggedIn, function (req, res) {
