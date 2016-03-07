@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "snyk test && mocha"
+    "test": ""
   },
   "author": "Digby Knight",
   "license": "MIT",
@@ -49,6 +49,7 @@
     "passport-saml": "^0.14.0",
     "path": "^0.12.7",
     "redis": "^2.4.2",
+    "rollbar": "^0.5.13",
     "serve-favicon": "^2.3.0",
     "stripe": "^4.1.0",
     "uninstall": "0.0.0-reserved",
