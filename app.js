@@ -20,8 +20,8 @@ var RedisStore = require('connect-redis')(session);
 var i18n = require('i18next');
 var i18nextMiddleware = require('i18next-express-middleware');
 i18n
-  .use(i18nextMiddleware.LanguageDetector)
-  .init({});
+	.use(i18nextMiddleware.LanguageDetector)
+	.init({});
 
 var passport = require('passport');
 var strategy = require('./lib/auth0');
@@ -64,6 +64,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('port', (process.env.PORT || 3000));
 
-app.listen(app.get('port'), function () {
+app.listen(app.get('port'), function() {
 	logger.log('info', 'Node app is running at localhost:' + app.get('port'));
 });
