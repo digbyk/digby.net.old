@@ -39,6 +39,7 @@ bower_components
 
 # Other
 .env
-.vscode
 Thumbs.db
-x.snyk
+
+# Visual Studio Code
+.vscode
