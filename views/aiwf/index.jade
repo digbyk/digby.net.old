@@ -1,13 +1,17 @@
 extends ../layout
 
+block append head
+	link(rel='stylesheet', href='/css/aiwf.css')
+
 block main
-	block subnav
-		include ./subnav.jade
-	
-	block content
+	#aiwf
+		#subnav
+			include ./subnav.jade
+		
 		#content
-			h1 All I Want For
-			ul
-				each list in lists
-					li
-						a(href="alliwantfor/#{list.id}") #{list.name}
+				ul.action
+					each list in lists
+						li
+							a(href="alliwantfor/#{list.id}") #{list.name}
+							span edit
+							span delete
