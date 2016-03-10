@@ -9,24 +9,22 @@ body {
   	font-size: 1.2rem;
 	font-weight: 100;
 	line-height: 1.5rem;
-	background-color: #222;
-	color: #ddd;
+	background-color: #eee;
+	color: #333;
 	padding: 0;
 	margin: 0;
 	height: 100vh;
 	box-sizing: 0;
-	background-image: url(../images/bg.jpg);
-	background-size: cover;
 }
 a {
-	color: #ddd;
+	color: #333;
 	text-decoration: none;
 }
 p {
 	margin: 1.5rem 0;
 }
 a:hover {
-	color: #fff;
+	color: #666;
 	text-decoration: underline;
 }
 pre {
@@ -69,19 +67,31 @@ table thead tr th {
 	width: 100%;
 	order: -2;
 	padding: 0rem;
-	background-color: rgba(0, 0, 0, 0.25);
+	background-color: #48f;
+	color: white;
+	box-shadow: 0px 2px 8px rgba(0,0,0,0.5);
 }
 #main {
 	max-width: 1200px;
 	min-width: 80%;
+	margin: 2rem;
 	padding: 2rem 2rem;
 	order: 0;
 	flex: 1;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 @media (max-width: 600px) {
 	#main {
 		min-width: 100%;
 	}
+}
+#main>ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+	line-height: 2rem;
 }
 #footer {
 	max-width: 1200px;
@@ -95,6 +105,7 @@ table thead tr th {
 	justify-content: space-between;
 }
 #nav a {
+	color: white;
 	display: flex;
 	align-items: center;
 }
@@ -103,7 +114,7 @@ table thead tr th {
 }
 #nav img.logo {
 	padding: 0;
-	margin: 0.5rem;
+	margin: 0rem;
 	height: 4rem;
 }
 #nav span {
@@ -114,8 +125,8 @@ table thead tr th {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding: 0.5rem;
-	min-height: 4rem;
+	padding: 0.25rem;
+	min-height: 2rem;
 	margin: 0;
 	list-style-type: none;
 }
@@ -128,7 +139,6 @@ table thead tr th {
 	padding: 0.5rem 1rem;
 	border: 2px solid transparent;
 	border-radius: 4px;
-	text-shadow: 1px 1px rgba(0,0,0,0.5);
 }
 #nav ul li.toggle {
 	display: none;
@@ -142,14 +152,8 @@ table thead tr th {
 	text-decoration: none;
 }
 #nav ul li img {
-	height: 4rem;
+	height: 2rem;
 	border-radius: 50%;
-}
-#main>ul {
-	list-style-type: none;
-	margin: 0;
-	padding-left: 0;
-	line-height: 2rem;
 }
 #nav input[type=checkbox] {
 	display: none;
@@ -178,6 +182,14 @@ table thead tr th {
 	#nav input:checked ~ ul li:not([class~=toggle]) {
 		display: block;
 	}
+}
+#subnav {
+	width: 200px;
+	margin: 1rem;
+}
+#content {
+	flex: 1;
+	margin: 1rem;
 }
 .round {
 	border-radius: 50%;
