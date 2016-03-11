@@ -13,5 +13,6 @@ block main
 					each list in lists
 						li
 							a(href="alliwantfor/#{list.id}") #{list.name}
-							span edit
-							span delete
+							ul
+								li edit
+								li delete

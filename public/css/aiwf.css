@@ -17,6 +17,7 @@ label input, label select {
 	padding: 0;
 }
 #aiwf {
+	margin-top: 2rem;
 	flex: 1;
 	display: flex;
 	flex-direction: row;
@@ -37,7 +38,8 @@ ul.subnav, ul.action {
 	line-height: 2rem;
 }
 ul.subnav li {
-	padding: 0;
+	padding: 0.25rem;
+	border-radius: 0.2rem;
 }
 ul.subnav li:hover {
 	background-color: #ddd;
@@ -46,17 +48,29 @@ ul.subnav li a {
 	display: inline-block;
 	width: 100%;
 	text-decoration: none;
-	margin: 0.25rem;
 }
-ul.action li span {
-	float: right;
-	margin-left: 2rem;
+ul.action {
+	box-shadow: 1px 1px 8px rgba(0,0,0,0.25);
+}
+ul.action li {
+	padding: 0.25rem 1rem;
+	border-bottom: 1px solid #ddd;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+ul.action li ul {
+	margin: 0 1rem;
+	flex-direction: row;
 	display: none;
 }
-ul.action li:hover span {
-	display: inline;
+ul.action li ul li {
+	border-width: 0;
+	padding: 0 0 0 1rem;
 }
-ul.action a {
+ul.action li:hover ul {
+	display: flex;
+}
+ul.action li a {
 	text-decoration: none;
 }
-

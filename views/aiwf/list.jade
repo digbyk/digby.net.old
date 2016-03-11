@@ -2,17 +2,16 @@ extends ../layout
 
 block append head
 	link(rel='stylesheet', href='/css/aiwf.css')
-	
+
 block main
-	h1 All I Want For
-	table
-		thead
-			tr
-				th Gift
-				th For
-		tbody
-			each gift in gifts
-				tr
-					td= gift.name
-					td= gift.owner
-		script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+	#aiwf
+		#subnav
+			include ./subnav.jade
+		
+		#content
+			ul.action
+				each gift in gifts
+					li
+						span= gift.name
+						span= gift.owner
+				script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js')
