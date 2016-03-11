@@ -100,7 +100,7 @@ table thead tr th {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding: 0 2rem;
+	padding: 0 1rem;
 }
 #nav a {
 	color: white;

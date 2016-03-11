@@ -51,6 +51,7 @@ ul.subnav li a {
 }
 ul.action {
 	box-shadow: 1px 1px 8px rgba(0,0,0,0.25);
+	background-color: white;
 }
 ul.action li {
 	padding: 0.25rem 1rem;
@@ -73,4 +74,9 @@ ul.action li:hover ul {
 }
 ul.action li a {
 	text-decoration: none;
+}
+h3 {
+	color: #333;
+	font-size: 1.1rem;
+	margin-left: 1rem;
 }

@@ -9,10 +9,11 @@ block main
 			include ./subnav.jade
 		
 		#content
-				ul.action
-					each list in lists
-						li
-							a(href="alliwantfor/#{list.id}") #{list.name}
-							ul
-								li edit
-								li delete
+			h3 My lists
+			ul.action
+				each list in lists
+					li
+						a(href="alliwantfor/#{list.id}") #{list.name}
+						ul
+							li edit
+							li delete
