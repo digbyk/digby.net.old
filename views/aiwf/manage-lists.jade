@@ -11,10 +11,9 @@ block main
 			ul.action.mdl-list
 				each list in lists
 					li.mdl-list__item
-						span
-							a(href="alliwantfor/#{list.id}") #{list.name}
+						span= list.name
 						span.mdl-list__item-secondary-content
-							a.mdl-list__item-secondary-action(href="#")
+							a.mdl-list__item-secondary-action(href="edit/#{list.id}")
 								i.material-icons.md-dark edit
 							a.mdl-list__item-secondary-action(href="delete/#{list.id}")
 								i.material-icons.md-dark delete
