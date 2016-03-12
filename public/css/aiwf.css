@@ -1,82 +1,35 @@
-label {
-	display: block;
-	width: 30rem;
-}
-label input, label select {
-	width: 300px;
-	font-size: 1.4rem;
-	border-radius: 5px;
-}
-.selection {
-	color: black;
-}
-#main {
-	width: 100%;
-	max-width: 100%;
-	margin: 0;
-	padding: 0;
-}
-#aiwf {
-	margin-top: 2rem;
-	flex: 1;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-#subnav {
-	width: 200px;
-	margin: 1rem;
-}
 #content {
 	flex: 1;
 	margin: 1rem;
 }
-ul.subnav, ul.action {
+ul.action {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
 	line-height: 2rem;
 }
-ul.subnav li {
-	padding: 0.25rem;
-	border-radius: 0.2rem;
-}
-ul.subnav li:hover {
-	background-color: #ddd;
-}
-ul.subnav li a {
-	display: inline-block;
-	width: 100%;
-	text-decoration: none;
-}
-ul.action {
-	box-shadow: 1px 1px 8px rgba(0,0,0,0.25);
-	background-color: white;
-}
 ul.action li {
-	padding: 0.25rem 1rem;
 	border-bottom: 1px solid #ddd;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
-ul.action li ul {
-	margin: 0 1rem;
+button.new {
+	position: absolute;
+	right: 2rem;
+	bottom: 2rem;
+}
+.mdl-card {
+	width: auto;
+	min-height: auto;
+}
+.mdl-list__item .mdl-list__item-secondary-content {
 	flex-direction: row;
-	display: none;
+	visibility: hidden;
 }
-ul.action li ul li {
-	border-width: 0;
-	padding: 0 0 0 1rem;
+.mdl-list__item:hover .mdl-list__item-secondary-content {
+	visibility: visible;
 }
-ul.action li:hover ul {
-	display: flex;
-}
-ul.action li a {
-	text-decoration: none;
-}
-h3 {
-	color: #333;
-	font-size: 1.1rem;
-	margin-left: 1rem;
+.mdl-list__item {
+	border-bottom: 1px solid #ddd;
 }

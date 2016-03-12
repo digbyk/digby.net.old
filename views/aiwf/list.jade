@@ -1,17 +1,19 @@
-extends ../layout
+extends ./layout
 
 block append head
-	link(rel='stylesheet', href='/css/aiwf.css')
+	link(rel="stylesheet", href="/css/aiwf.css")
 
 block main
-	#aiwf
-		#subnav
-			include ./subnav.jade
-		
-		#content
-			ul.action
-				each gift in gifts
-					li
-						span= gift.name
-						span= gift.owner
-				script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+	#content
+		each person, name in gifts
+			h6= name
+			.mdl-card.mdl-shadow--4dp
+				ul.action.mdl-list
+					each gift in person
+						li.mdl-list__item
+							span= gift.name
+							span.mdl-list__item-secondary-content
+								a.mdl-list__item-secondary-action(href="#")
+									label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="switch-#{gift.id}")
+										input.mdl-switch__input(type="checkbox",id="switch-#{gift.id}",checked="checked")
+
