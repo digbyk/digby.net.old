@@ -1,3 +1,7 @@
+form {
+	max-width: 400px;
+	padding: 1rem;
+}
 #content {
 	flex: 1;
 	margin: 1rem;
@@ -14,22 +18,29 @@ ul.action li {
 	flex-direction: row;
 	justify-content: space-between;
 }
-button.new {
+.new {
 	position: absolute;
 	right: 2rem;
 	bottom: 2rem;
+	z-index: 10;
 }
 .mdl-card {
-	width: auto;
 	min-height: auto;
+	margin: 2rem;
+}
+.card-wide {
+	width: auto;	
 }
 .mdl-list__item .mdl-list__item-secondary-content {
 	flex-direction: row;
-	visibility: hidden;
+	xvisibility: hidden;
 }
 .mdl-list__item:hover .mdl-list__item-secondary-content {
-	visibility: visible;
+	xvisibility: visible;
 }
 .mdl-list__item {
 	border-bottom: 1px solid #ddd;
+}
+.mdl-textfield {
+	width: 100%;
 }

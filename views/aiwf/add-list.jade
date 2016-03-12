@@ -1,0 +1,34 @@
+extends ./layout
+
+block append head
+	link(rel="stylesheet", href="/css/aiwf.css")
+	link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css")
+
+block main
+	#content
+		h6 Add list
+		.mdl-card.mdl-shadow--4dp
+			form(action="", method="post")
+				h5 Add list
+				input(type="hidden", id="id", value="")
+				.mdl-textfield.mdl-js-textfield
+					input.mdl-textfield__input(type="text", id="name", name="name", required)
+					label.mdl-textfield__label(for="name") Name
+				.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
+					textarea.mdl-textfield__input(type="text", id="notes", name="notes", rows="5")
+					label.mdl-textfield__label(for="notes") Notes
+				.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
+					label.mdl-textfield__label(for="members") Members
+					select.mdl-textfield__input(type="text", id="members", name="members", multiple, required)
+						option(value="#{owner}")= owner
+				input.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect(type="submit", value="Add")
+			
+block append script
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js")
+	script.
+		$("#members").select2({
+			tags: true,
+			tokenSeparators: [',', ' '],
+			placeholder: 'Add members (emails)'
+		});

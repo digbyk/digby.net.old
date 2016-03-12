@@ -31,7 +31,7 @@ passport.use(strategy);
 var app = express();
 app.use(cookieParser());
 app.use(morgan('combined'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(favicon(__dirname + '/public/images/waymead.png'));
 app.use(helmet());

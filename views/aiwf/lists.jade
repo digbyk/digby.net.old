@@ -6,23 +6,19 @@ block append head
 block main
 	#content
 		h6 My lists
-		.mdl-card.mdl-shadow--4dp
+		.mdl-card.mdl-shadow--4dp.card-wide
 			ul.action.mdl-list
 				each list in lists
-					li.mdl-list__item
-						span
-							a(href="alliwantfor/#{list.id}") #{list.name}
+					li.mdl-list__item.mdl-list__item--two-line
+						span.mdl-list__item-primary-content
+							span
+								a(href="alliwantfor/#{list.id}") #{list.name}
+							span.mdl-list__item-sub-title= list.notes
 						span.mdl-list__item-secondary-content
 							a.mdl-list__item-secondary-action(href="#")
 								i.material-icons.md-dark edit
 							a.mdl-list__item-secondary-action(href="#")
 								i.material-icons.md-dark delete
-						//ul
-							li
-								a
-									i.material-icons.md-dark edit
-							li
-								a(href="#")
-									i.material-icons.md-dark delete
+								
 		button.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect
 			i.material-icons.md-light add

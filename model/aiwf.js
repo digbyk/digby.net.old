@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var listSchema = new Schema({
 	name: String,
 	type: String,
+	notes: String,
 	created: {
 		type: Date,
 		default: Date.now()
@@ -16,6 +17,7 @@ var List = mongoose.model('List', listSchema);
 
 var giftSchema = new Schema({
 	name: String,
+	url: String,
 	list: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'List'
