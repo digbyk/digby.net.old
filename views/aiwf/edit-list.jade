@@ -10,7 +10,7 @@ block main
 		.mdl-card.mdl-shadow--4dp
 			form(action="/alliwantfor/lists/save", method="post")
 				h5 Add list
-				input(type="text", id="id", name="id", value="#{list? list.id: ''}")
+				input(type="hidden", id="id", name="id", value="#{list? list.id: ''}")
 				.mdl-textfield.mdl-js-textfield
 					input.mdl-textfield__input(type="text", id="name", name="name", required, value="#{list? list.name: ''}")
 					label.mdl-textfield__label(for="name") Name
@@ -21,7 +21,12 @@ block main
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
 					label.mdl-textfield__label(for="members") Members
 					select.mdl-textfield__input(type="text", id="members", name="members", multiple, required)
-						option(value="#{owner}")= owner
+						if list && list.members
+							each member in list.members
+								option(value="#{member}", selected)= member
+						else
+							option(value="#{owner}", selected)= owner
+						
 				input.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect(type="submit", value="Save")
 			
 block append script
