@@ -61,7 +61,6 @@ router.post('/lists/add', ensureLoggedIn, function(req, res) {
 	var list = new List({name: req.body.name, notes: req.body.notes, members: req.body.members, owner: req.user.email});
 	list.save()
 	.then(function(list) {
-		console.log(list);
 		res.redirect('/alliwantfor/lists/manage');
 	})
 	.catch(function(err) {
@@ -70,11 +69,9 @@ router.post('/lists/add', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/lists/delete/:id', ensureLoggedIn, function(req, res) {
-	console.log(req.params.id);
 	List.findOneAndRemove({_id: req.params.id, owner: req.user.email})
 	.exec()
 	.then(function(result) {
-		console.log(result);
 		res.redirect('/alliwantfor/lists/manage');
 	})
 	.catch(function(err) {

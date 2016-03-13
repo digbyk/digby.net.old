@@ -32,10 +32,8 @@ ul.action li {
 }
 .mdl-list__item .mdl-list__item-secondary-content {
 	flex-direction: row;
-	xvisibility: hidden;
 }
 .mdl-list__item:hover .mdl-list__item-secondary-content {
-	xvisibility: visible;
 }
 .mdl-list__item {
 	border-bottom: 1px solid #ddd;
