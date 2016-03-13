@@ -21,12 +21,16 @@ router.get('/', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/:listId', ensureLoggedIn, function(req, res) {
+	var groupedGifts;
 	Gift.find({ list: req.params.listId, owner: { '$ne': req.user.email } })
 		.sort('owner')
 		.exec()
 		.then(function(gifts) {
-			var groupedGifts = _.groupBy(gifts, 'owner');
-			res.render('aiwf/list', { gifts: groupedGifts });
+			groupedGifts = _.groupBy(gifts, 'owner');
+			return List.findOne({ _id: req.params.listId });
+		})
+		.then(function(list) {			
+			res.render('aiwf/list', { list: list, gifts: groupedGifts });
 		})
 		.catch(function(err) {
 			logger.error(err);
@@ -165,6 +169,18 @@ router.get('/gifts/delete/:id', ensureLoggedIn, function(req, res) {
 		.exec()
 		.then(function() {
 			res.redirect('/alliwantfor/gifts/manage');
+		})
+		.catch(function(err) {
+			logger.error('Eek');
+			logger.error(err);
+		});
+});
+
+router.get('/gifts/buy/:id', ensureLoggedIn, function(req, res) {
+	Gift.findOne({ _id: req.params.id, owner: req.user.email })
+		.exec()
+		.then(function() {
+			res.json({status: true});
 		})
 		.catch(function(err) {
 			logger.error('Eek');

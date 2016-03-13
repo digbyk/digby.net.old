@@ -5,17 +5,18 @@ block append head
 
 block main
 	#content
-		each person, name in gifts
-			h6= name
-			.mdl-card.mdl-shadow--4dp.card-wide
-				ul.action.mdl-list
-					each gift in person
-						li.mdl-list__item.mdl-list__item--two-line
-							span.mdl-list__item-primary-content
-								span= gift.name
-								span.mdl-list__item-sub-title= gift.url
-							span.mdl-list__item-secondary-content
-								a.mdl-list__item-secondary-action(href="#")
-									label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="switch-#{gift.id}")
-										input.mdl-switch__input(type="checkbox",id="switch-#{gift.id}",checked)
-
+		section
+			h5= list.name
+			each person, name in gifts
+				h6= name
+				.mdl-card.mdl-shadow--4dp.card-wide
+					ul.action.mdl-list
+						each gift in person
+							li.mdl-list__item.mdl-list__item--two-line
+								span.mdl-list__item-primary-content
+									span= gift.name
+									span.mdl-list__item-sub-title= gift.url
+								span.mdl-list__item-secondary-content
+									a.mdl-list__item-secondary-action(href="#")
+										label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="switch-#{gift.id}")
+											input.mdl-switch__input(type="checkbox",id="switch-#{gift.id}",checked)

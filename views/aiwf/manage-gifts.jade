@@ -6,22 +6,23 @@ block append head
 
 block main
 	#content
-		h6 Manage my gifts
-		.mdl-card.mdl-shadow--4dp.card-wide
-			ul.action.mdl-list
-				each gift in gifts
-					li.mdl-list__item.mdl-list__item--two-line
-						span.mdl-list__item-primary-content
-							span= gift.name
-							span.mdl-list__item-sub-title= gift.list.name
-						span.mdl-list__item-secondary-content
-							a.mdl-list__item-secondary-action(href="edit/#{gift.id}")
-								i.material-icons.md-dark edit
-							a.mdl-list__item-secondary-action(href="delete/#{gift.id}")
-								i.material-icons.md-dark delete
-									
-		a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
-			i.material-icons.md-light add
+		section
+			h6 Manage my gifts
+			.mdl-card.mdl-shadow--4dp.card-wide
+				ul.action.mdl-list
+					each gift in gifts
+						li.mdl-list__item.mdl-list__item--two-line
+							span.mdl-list__item-primary-content
+								span= gift.name
+								span.mdl-list__item-sub-title= gift.list.name
+							span.mdl-list__item-secondary-content
+								a.mdl-list__item-secondary-action(href="edit/#{gift.id}")
+									i.material-icons.md-dark edit
+								a.mdl-list__item-secondary-action(href="delete/#{gift.id}")
+									i.material-icons.md-dark delete
+										
+			a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
+				i.material-icons.md-light add
 			
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")

@@ -5,6 +5,16 @@ form {
 #content {
 	flex: 1;
 	margin: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: middle;
+	flex-wrap: wrap;
+}
+section {
+	min-width: 480px;
+	margin: 1rem;
+	flex: 1;
 }
 ul.action {
 	list-style-type: none;
@@ -26,9 +36,10 @@ ul.action li {
 }
 .mdl-card {
 	min-height: auto;
+	margin-top: 2rem;
 }
 .card-wide {
-	width: auto;	
+	width: 100%;	
 }
 .mdl-list__item .mdl-list__item-secondary-content {
 	flex-direction: row;
