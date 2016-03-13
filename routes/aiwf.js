@@ -54,41 +54,49 @@ router.get('/lists/manage', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/lists/add', ensureLoggedIn, function(req, res) {
-	res.render('aiwf/add-list', { owner: req.user.email });
+	res.render('aiwf/edit-list', { owner: req.user.email });
 });
 
-router.post('/lists/add', ensureLoggedIn, function(req, res) {
-	var list = new List({name: req.body.name, notes: req.body.notes, members: req.body.members, owner: req.user.email});
-	list.save()
-	.then(function(list) {
-		res.redirect('/alliwantfor/lists/manage');
-	})
-	.catch(function(err) {
-		logger.error(err);
-	});
-});
-
-router.get('/lists/delete/:id', ensureLoggedIn, function(req, res) {
-	List.findOneAndRemove({_id: req.params.id, owner: req.user.email})
-	.exec()
-	.then(function(result) {
-		res.redirect('/alliwantfor/lists/manage');
-	})
-	.catch(function(err) {
-		logger.error('Eek');
-		logger.error(err);
-	});
+router.post('/lists/save', ensureLoggedIn, function(req, res) {
+	var list = new List({ name: req.body.name, notes: req.body.notes, members: req.body.members, owner: req.user.email });
+	if (!req.body.id) {
+		list.save()
+			.then(function() {
+				res.redirect('/alliwantfor/lists/manage');
+			})
+			.catch(function(err) {
+				logger.error(err);
+			});
+	} else {
+		List.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true })
+			.then(function() {
+				res.redirect('/alliwantfor/lists/manage');
+			})
+			.catch(function(err) {
+				logger.error(err);
+			});
+	}
 });
 
 router.get('/lists/edit/:id', ensureLoggedIn, function(req, res) {
-	if (req.params.id) {
-		console.log(req.params.id);
-	}
-	List.find({ owner: req.user.email })
-		.then(function(lists) {
-			res.render('aiwf/edit-lists', { lists: lists, owner: req.user.email });
+	List.findOne({ _id: req.params.id, owner: req.user.email })
+		.exec()
+		.then(function(list) {
+			res.render('aiwf/edit-list', { list: list, owner: req.user.email });
 		})
 		.catch(function(err) {
+			logger.error(err);
+		});
+});
+
+router.get('/lists/delete/:id', ensureLoggedIn, function(req, res) {
+	List.findOneAndRemove({ _id: req.params.id, owner: req.user.email })
+		.exec()
+		.then(function(result) {
+			res.redirect('/alliwantfor/lists/manage');
+		})
+		.catch(function(err) {
+			logger.error('Eek');
 			logger.error(err);
 		});
 });
