@@ -58,7 +58,7 @@ router.get('/lists/add', ensureLoggedIn, function(req, res) {
 });
 
 router.post('/lists/add', ensureLoggedIn, function(req, res) {
-	var list = new List({name: req.body.name, notes: req.body.notes, owner: req.user.email});
+	var list = new List({name: req.body.name, notes: req.body.notes, members: req.body.members, owner: req.user.email});
 	list.save()
 	.then(function(list) {
 		console.log(list);
