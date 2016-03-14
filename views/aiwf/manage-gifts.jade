@@ -7,19 +7,23 @@ block append head
 block main
 	#content
 		section
-			h6 Manage my gifts
-			.mdl-card.mdl-shadow--4dp.card-wide
-				ul.action.mdl-list
-					each gift in gifts
-						li.mdl-list__item.mdl-list__item--two-line
-							span.mdl-list__item-primary-content
-								span= gift.name
-								span.mdl-list__item-sub-title= gift.list.name
-							span.mdl-list__item-secondary-content
-								a.mdl-list__item-secondary-action(href="edit/#{gift.id}")
-									i.material-icons.md-dark edit
-								a.mdl-list__item-secondary-action(href="delete/#{gift.id}")
-									i.material-icons.md-dark delete
+		table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--4dp
+			thead
+				tr
+					th.mdl-data-table__cell--non-numeric Name
+					th.mdl-data-table__cell--non-numeric List
+					th Actions
+			tbody
+				each gift in gifts
+					tr(data-mdl-data-table-selectable-value="gift-#{gift.id}")
+						td.mdl-data-table__cell--non-numeric
+							a(href="edit/#{gift.id}")= gift.name
+						td.mdl-data-table__cell--non-numeric= gift.list.name
+						td
+							a(href="edit/#{gift.id}")
+								i.material-icons.md-dark edit
+							a.mdl-list__item-secondary-action(href="delete/#{gift.id}")
+								i.material-icons.md-dark delete
 										
 			a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
 				i.material-icons.md-light add

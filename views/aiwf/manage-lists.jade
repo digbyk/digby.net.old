@@ -6,17 +6,19 @@ block append head
 
 block main
 	#content
-		h6 Manage my lists
-		.mdl-card.mdl-shadow--4dp.card-wide
-			ul.action.mdl-list
-				each list in lists
-					li.mdl-list__item
-						span= list.name
-						span.mdl-list__item-secondary-content
-							a.mdl-list__item-secondary-action(href="edit/#{list.id}")
-								i.material-icons.md-dark edit
-							a.mdl-list__item-secondary-action(href="delete/#{list.id}")
-								i.material-icons.md-dark delete
+		h5 Manage lists
+		table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--4dp
+			thead
+				tr
+					th.mdl-data-table__cell--non-numeric Name
+					th Delete
+			each list in lists
+				tr(data-mdl-data-table-selectable-value="list-#{list.id}")
+					td.mdl-data-table__cell--non-numeric
+						a(href="edit/#{list.id}")= list.name
+					td
+						a(href="delete/#{list.id}")
+							i.material-icons.md-dark delete
 									
 		a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/lists/add")
 			i.material-icons.md-light add

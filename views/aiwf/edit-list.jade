@@ -7,9 +7,9 @@ block append head
 block main
 	#content
 		.mdl-card.mdl-shadow--4dp
-			.mdl-card__title
-				h5 Add / edit list
-			.mdl-card__actions
+			.mdl-card__title.mdl-color--primary.mdl-color-text--white
+				h2.mdl-card__title-text Add / edit list
+			.mdl-card__supporting-text
 				form(action="/alliwantfor/lists/save", method="post")
 					input(type="hidden", id="id", name="id", value="#{list? list.id: ''}")
 					.mdl-textfield.mdl-js-textfield

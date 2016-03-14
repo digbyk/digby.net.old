@@ -16,17 +16,8 @@ section {
 	margin: 1rem;
 	flex: 1;
 }
-ul.action {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	line-height: 2rem;
-}
-ul.action li {
-	border-bottom: 1px solid #ddd;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+h1, h2, h3, h4, h5, h6 {
+	width: 100%;
 }
 .new {
 	position: absolute;
@@ -51,4 +42,13 @@ ul.action li {
 }
 .mdl-textfield {
 	width: 100%;
+}
+.mdl-data-table {
+	min-width: 100%;
+}
+.mdl-data-table tbody td:first-child {
+	width: 1rem;
+}
+.mdl-data-table tbody td:nth-child(3) {
+	width: 4rem;
 }

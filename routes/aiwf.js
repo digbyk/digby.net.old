@@ -11,7 +11,7 @@ var router = express.Router();
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
 router.get('/', ensureLoggedIn, function(req, res) {
-	List.find({ members: req.user.email })
+	List.find({ members: req.user.email }, {}, {sort: 'name'})
 		.then(function(lists) {
 			res.render('aiwf/lists', { lists: lists });
 		})
@@ -48,7 +48,7 @@ router.get('/:listId/edit', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/lists/manage', ensureLoggedIn, function(req, res) {
-	List.find({ owner: req.user.email })
+	List.find({ owner: req.user.email }, {}, {sort: 'name'})
 		.then(function(lists) {
 			res.render('aiwf/manage-lists', { lists: lists, owner: req.user.email });
 		})
@@ -177,10 +177,22 @@ router.get('/gifts/delete/:id', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/gifts/buy/:id', ensureLoggedIn, function(req, res) {
-	Gift.findOne({ _id: req.params.id, owner: req.user.email })
+	Gift.findOneAndUpdate({ _id: req.params.id }, {$set: {boughtBy: req.user.email}})
 		.exec()
 		.then(function() {
-			res.json({status: true});
+			res.redirect('/alliwantfor/gifts/manage');
+		})
+		.catch(function(err) {
+			logger.error('Eek');
+			logger.error(err);
+		});
+});
+
+router.get('/gifts/return/:id', ensureLoggedIn, function(req, res) {
+	Gift.findOneAndUpdate({ _id: req.params.id }, {$unset: {boughtBy: 1}})
+		.exec()
+		.then(function() {
+			res.redirect('/alliwantfor/gifts/manage');
 		})
 		.catch(function(err) {
 			logger.error('Eek');

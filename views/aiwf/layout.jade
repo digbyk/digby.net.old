@@ -10,7 +10,7 @@ html(lang="en")
 			meta(name="viewport", content="width=device-width, initial-scale=1.0")
 	
 			link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
-			link(rel="stylesheet", href="https://code.getmdl.io/1.1.2/material.purple-blue.min.css")
+			link(rel="stylesheet", href="https://code.getmdl.io/1.1.2/material.blue-deep_orange.min.css")
 			//link(rel="stylesheet", href="/css/styles.css")
 					
 			link(rel="shortcut icon", href="/images/waymead.png", sizes="196x196", type="image/x-icon")
@@ -24,15 +24,7 @@ html(lang="en")
 				include header
 			main.mdl-layout__content
 				block main
-		//#outer
-			#inner
-				#header
-					block header
-						include header
-				#main
-					xblock main
-				#footer
-					block footer
-						include footer
+			block footer
+			
 		block script
 			script(src="https://code.getmdl.io/1.1.2/material.min.js")
