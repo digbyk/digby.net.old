@@ -52,3 +52,15 @@ h1, h2, h3, h4, h5, h6 {
 .mdl-data-table tbody td:nth-child(3) {
 	width: 4rem;
 }
+#buyreplace *:first-child {
+	display: inline-block;
+}
+#buyreplace *:last-child {
+	display: none;
+}
+#buyreplace:hover *:first-child {
+	display: none;
+}
+#buyreplace:hover *:last-child {
+	display: inline-block;
+}

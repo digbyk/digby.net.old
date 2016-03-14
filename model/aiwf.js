@@ -26,7 +26,8 @@ var giftSchema = new Schema({
 		type: Date,
 		default: Date.now()
 	},
-	owner: String
+	owner: String,
+	boughtBy: String
 }, { collection: 'aiwf_gifts' });
 
 var Gift = mongoose.model('Gift', giftSchema);

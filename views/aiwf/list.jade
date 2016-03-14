@@ -8,16 +8,29 @@ block main
 		h5= list.name
 		each person, name in gifts
 			h6= name
-			ul.action.mdl-list.mdl-shadow--4dp
-				each gift in person
-					li.mdl-list__item.mdl-list__item--two-line
-						span.mdl-list__item-primary-content
-							span= gift.name
-							span.mdl-list__item-sub-title= gift.url
-						span.mdl-list__item-secondary-content
-							a.mdl-list__item-secondary-action(href="#")
-								label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="switch-#{gift.id}")
-									input.mdl-switch__input(type="checkbox",id="switch-#{gift.id}",checked,onclick="buyreturn($(this));")
+			table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
+				thead
+					tr
+						th.mdl-data-table__cell--non-numeric Name
+				tbody
+					each gift in person
+						- var checked = (gift.boughtBy === user.email)
+						- var disabled = typeof(gift.boughtBy) == 'undefined' || gift.boughtBy === user.email
+						tr
+							td.mdl-data-table__cell--non-numeric= gift.name
+							td.mdl-data-table__cell--non-numeric= gift.url
+							td
+								if gift.boughtBy === user.email
+									#buyreplace
+										a.mdl-button.mdl-js-button.mdl-button--primary Bought
+										a.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent.mdl-color-text--white(href="/alliwantfor/gifts/replace/#{gift.id}") Replace
+								else if typeof(gift.boughtBy) == 'undefined'
+									a.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent.mdl-color-text--white(href="/alliwantfor/gifts/buy/#{gift.id}") Buy
+								//label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="switch-#{gift.id}") 
+									input.mdl-switch__input(type="checkbox",id="switch-#{gift.id}",
+										checked=(checked ? "checked" : undefined),
+										disabled=(disabled ? "disabled" : undefined),
+										onclick="buyreturn($(this));")
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
 	script.

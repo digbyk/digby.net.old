@@ -30,7 +30,7 @@ router.get('/:listId', ensureLoggedIn, function(req, res) {
 			return List.findOne({ _id: req.params.listId });
 		})
 		.then(function(list) {			
-			res.render('aiwf/list', { list: list, gifts: groupedGifts });
+			res.render('aiwf/list', { list: list, gifts: groupedGifts, user: req.user });
 		})
 		.catch(function(err) {
 			logger.error(err);
@@ -178,9 +178,10 @@ router.get('/gifts/delete/:id', ensureLoggedIn, function(req, res) {
 
 router.get('/gifts/buy/:id', ensureLoggedIn, function(req, res) {
 	Gift.findOneAndUpdate({ _id: req.params.id }, {$set: {boughtBy: req.user.email}})
+		.populate('list')
 		.exec()
-		.then(function() {
-			res.redirect('/alliwantfor/gifts/manage');
+		.then(function(gift) {
+			res.redirect('/alliwantfor/' + gift.list.id);
 		})
 		.catch(function(err) {
 			logger.error('Eek');
@@ -188,11 +189,12 @@ router.get('/gifts/buy/:id', ensureLoggedIn, function(req, res) {
 		});
 });
 
-router.get('/gifts/return/:id', ensureLoggedIn, function(req, res) {
+router.get('/gifts/replace/:id', ensureLoggedIn, function(req, res) {
 	Gift.findOneAndUpdate({ _id: req.params.id }, {$unset: {boughtBy: 1}})
+		.populate('list')
 		.exec()
-		.then(function() {
-			res.redirect('/alliwantfor/gifts/manage');
+		.then(function(gift) {
+			res.redirect('/alliwantfor/' + gift.list.id);
 		})
 		.catch(function(err) {
 			logger.error('Eek');
