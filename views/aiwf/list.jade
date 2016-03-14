@@ -5,20 +5,19 @@ block append head
 
 block main
 	#content
-		section
-			h5= list.name
-			each person, name in gifts
-				h6= name
-				ul.action.mdl-list.mdl-shadow--4dp
-					each gift in person
-						li.mdl-list__item.mdl-list__item--two-line
-							span.mdl-list__item-primary-content
-								span= gift.name
-								span.mdl-list__item-sub-title= gift.url
-							span.mdl-list__item-secondary-content
-								a.mdl-list__item-secondary-action(href="#")
-									label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="switch-#{gift.id}")
-										input.mdl-switch__input(type="checkbox",id="switch-#{gift.id}",checked,onclick="buyreturn($(this));")
+		h5= list.name
+		each person, name in gifts
+			h6= name
+			ul.action.mdl-list.mdl-shadow--4dp
+				each gift in person
+					li.mdl-list__item.mdl-list__item--two-line
+						span.mdl-list__item-primary-content
+							span= gift.name
+							span.mdl-list__item-sub-title= gift.url
+						span.mdl-list__item-secondary-content
+							a.mdl-list__item-secondary-action(href="#")
+								label.mdl-switch.mdl-js-switch.mdl-js-ripple-effect(for="switch-#{gift.id}")
+									input.mdl-switch__input(type="checkbox",id="switch-#{gift.id}",checked,onclick="buyreturn($(this));")
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
 	script.
