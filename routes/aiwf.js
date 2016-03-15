@@ -22,15 +22,17 @@ router.get('/', ensureLoggedIn, function(req, res) {
 
 router.get('/:listId', ensureLoggedIn, function(req, res) {
 	var groupedGifts;
+	var numGifts;
 	Gift.find({ list: req.params.listId, owner: { '$ne': req.user.email } })
 		.sort('owner')
 		.exec()
 		.then(function(gifts) {
 			groupedGifts = _.groupBy(gifts, 'owner');
+			numGifts = gifts.length;
 			return List.findOne({ _id: req.params.listId });
 		})
 		.then(function(list) {			
-			res.render('aiwf/list', { list: list, gifts: groupedGifts, user: req.user });
+			res.render('aiwf/list', { list: list, gifts: groupedGifts, user: req.user, numGifts: numGifts });
 		})
 		.catch(function(err) {
 			logger.error(err);
