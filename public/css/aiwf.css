@@ -10,6 +10,11 @@ section {
 	margin: 1rem;
 	flex: 1;
 }
+h1, h2 {
+	color: rgb(33,150,243);
+	font-weight: 700;
+	text-transform: uppercase;
+}
 h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
