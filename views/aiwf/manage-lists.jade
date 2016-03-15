@@ -22,7 +22,17 @@ block main
 									
 		a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/lists/add")
 			i.material-icons.md-light add
-			
+		
+		button#show-dialog.mdl-button(type="button") Test - ignore me
+		
+		dialog.mdl-dialog
+			h4.mdl-dialog__title Add / edit gifts
+			.mdl-dialog__content
+				p This is some text
+			.mdl-dialog__actions
+			button.mdl-button(type="button") Save
+			button.mdl-button.close(type="button") Cancel
+  
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js")
@@ -31,4 +41,15 @@ block append script
 			tags: true,
 			tokenSeparators: [',', ' '],
 			placeholder: 'Add members (emails)'
+		});
+		var dialog = document.querySelector('dialog');
+		var showDialogButton = document.querySelector('#show-dialog');
+		if (! dialog.showModal) {
+			dialogPolyfill.registerDialog(dialog);
+		}
+		showDialogButton.addEventListener('click', function() {
+			dialog.showModal();
+		});
+		dialog.querySelector('.close').addEventListener('click', function() {
+			dialog.close();
 		});

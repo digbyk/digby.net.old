@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 }
 .new {
-	position: absolute;
+	position: fixed;
 	right: 2rem;
 	bottom: 2rem;
 	z-index: 10;
@@ -31,14 +31,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card-wide {
 	width: 100%;	
-}
-.mdl-list__item .mdl-list__item-secondary-content {
-	flex-direction: row;
-}
-.mdl-list__item:hover .mdl-list__item-secondary-content {
-}
-.mdl-list__item {
-	border-bottom: 1px solid #ddd;
 }
 .mdl-textfield {
 	width: 100%;
