@@ -6,27 +6,37 @@ block append head
 
 block main
 	#content
-		.mdl-card.mdl-shadow--4dp
-			form(action="/alliwantfor/gifts/save", method="post")
-				h5 Add gift
-				input(type="hidden", id="id", name="id", value="#{gift? gift.id: ''}")
-				.mdl-textfield.mdl-js-textfield
-					input.mdl-textfield__input(type="text", id="name", name="name", required, value="#{gift? gift.name: ''}")
-					label.mdl-textfield__label(for="name") Name
-				.mdl-textfield.mdl-js-textfield
-					input.mdl-textfield__input(type="url", id="url", name="url", value="#{gift? gift.url: ''}")
-					label.mdl-textfield__label(for="url") URL
-				.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
-					label.mdl-textfield__label(for="members") Members
-					select.mdl-textfield__input(type="text", id="list", name="list", required)
-						each list in lists
-							if gift && list.id === gift.list.id
-								option(value="#{list.id}", selected)= list.name
-							else
-								option(value="#{list.id}")= list.name
-						
-				input.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect(type="submit", value="Save")
-			
+		.mdl-grid
+			.mdl-cell.mdl-cell--12-col
+				h2 Add gift
+				
+			.mdl-cell.mdl-cell--4-col
+				.mdl-card.mdl-shadow--4dp
+					//.mdl-card__title.mdl-color--primary.mdl-color-text--white
+						h2.mdl-card__title-text Add / edit list
+					//.mdl-card__title.mdl-color--primary.mdl-color-text--white
+						h2.mdl-card__title-text Add / edit list
+					.mdl-card__supporting-text
+						form(action="/alliwantfor/gifts/save", method="post")
+							input(type="hidden", id="id", name="id", value="#{gift? gift.id: ''}")
+							.mdl-textfield.mdl-js-textfield
+								input.mdl-textfield__input(type="text", id="name", name="name", required, value="#{gift? gift.name: ''}")
+								label.mdl-textfield__label(for="name") Name
+							.mdl-textfield.mdl-js-textfield
+								input.mdl-textfield__input(type="url", id="url", name="url", value="#{gift? gift.url: ''}")
+								label.mdl-textfield__label(for="url") URL
+							.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
+								label.mdl-textfield__label(for="members") Members
+								select.mdl-textfield__input(type="text", id="list", name="list", required)
+									each list in lists
+										if gift && list.id === gift.list.id
+											option(value="#{list.id}", selected)= list.name
+										else
+											option(value="#{list.id}")= list.name
+									
+							input.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect(type="submit", value="Save")
+							a.mdl-button.mdl-js-button.mdl-js-ripple-effect(href="/alliwantfor/gifts/manage") Cancel
+		
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js")

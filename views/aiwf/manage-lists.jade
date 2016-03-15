@@ -6,32 +6,36 @@ block append head
 
 block main
 	#content
-		h5 Manage lists
-		table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
-			thead
-				tr
-					th.mdl-data-table__cell--non-numeric Name
-					th Actions
-			each list in lists
-				tr(data-mdl-data-table-selectable-value="list-#{list.id}")
-					td.mdl-data-table__cell--non-numeric
-						a(href="edit/#{list.id}")= list.name
-					td
-						a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored(href="delete/#{list.id}")
-							i.material-icons.md-light delete
-									
-		a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/lists/add")
-			i.material-icons.md-light add
-		
-		button#delete-dialog-button.mdl-button(type="button") Test - ignore me
-		
-		dialog#delete-dialog.mdl-dialog
-			h4.mdl-dialog__title Delete list?
-			.mdl-dialog__content
-				p Are you sure you want to delete the list?
-			.mdl-dialog__actions
-				button.mdl-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(type="button") Delete
-				button.mdl-button.close(type="button") Cancel
+		.mdl-grid
+			.mdl-cell.mdl-cell--12-col
+				h2 Manage lists
+				
+			.mdl-cell.mdl-cell--12-col
+				table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
+					thead
+						tr
+							th.mdl-data-table__cell--non-numeric Name
+							th Actions
+					each list in lists
+						tr(data-mdl-data-table-selectable-value="list-#{list.id}")
+							td.mdl-data-table__cell--non-numeric
+								a(href="edit/#{list.id}")= list.name
+							td
+								a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored(href="delete/#{list.id}")
+									i.material-icons.md-light delete
+											
+				a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/lists/add")
+					i.material-icons.md-light add
+				
+				button#delete-dialog-button.mdl-button(type="button") Test - ignore me
+				
+				dialog#delete-dialog.mdl-dialog
+					h4.mdl-dialog__title Delete list?
+					.mdl-dialog__content
+						p Are you sure you want to delete the list?
+					.mdl-dialog__actions
+						button.mdl-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(type="button") Delete
+						button.mdl-button.close(type="button") Cancel
   
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")

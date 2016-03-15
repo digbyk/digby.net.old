@@ -1,15 +1,9 @@
+html, body {
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+}
 form {
 	max-width: 400px;
 	padding: 1rem;
-}
-#content {
-	flex: 1;
-	margin: 1rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: middle;
-	flex-wrap: wrap;
 }
 section {
 	min-width: 480px;
@@ -25,9 +19,13 @@ h1, h2, h3, h4, h5, h6 {
 	bottom: 2rem;
 	z-index: 10;
 }
+.mdl-grid {
+	justify-content: center;
+	max-width: 1200px;
+}
 .mdl-card {
 	min-height: auto;
-	margin-top: 2rem;
+	smargin-top: 2rem;
 }
 .card-wide {
 	width: 100%;	
@@ -52,4 +50,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 #buyreplace:hover *:last-child {
 	display: inline-block;
+}
+.home-card {
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+#home-card-1 {
+	color: #fff;
+	height: 176px;
+	background: url('../images/christmas-xmas-christmas-tree-decoration-large.jpg') center / cover;
+}
+#home-card-2 {
+	color: #fff;
+	height: 176px;
+	background: url('../images/christmas-xmas-gifts-presents-large.jpg') center / cover;
+}
+#home-card-3 {
+	color: #fff;
+	height: 176px;
+	background: url('../images/theme-christmas-large.jpg') center / cover;
 }

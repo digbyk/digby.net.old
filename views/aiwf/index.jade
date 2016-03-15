@@ -1,0 +1,41 @@
+extends ./layout
+
+block append head
+	link(rel="stylesheet", href="/css/aiwf.css")
+
+block main
+	#content
+		.mdl-grid
+			.mdl-cell.mdl-cell--12-col
+				h2 All I Want For
+				
+			.mdl-cell.mdl-cell--4-col
+				.mdl-card.mdl-shadow--4dp.card-wide
+					.mdl-card__title#home-card-1.home-card
+						h5 Gift List
+					//.mdl-card__media
+						p pic
+					.mdl-card__supporting-text
+						p Find your friends' and family's gifts and mark them as bought.
+					.mdl-card__actions
+						a.mdl-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--primary(href="/alliwantfor/lists") Go
+			.mdl-cell.mdl-cell--4-col
+				.mdl-card.mdl-shadow--4dp.card-wide
+					.mdl-card__title#home-card-2.home-card
+						h5 Manage lists
+					//.mdl-card__media
+						p pic
+					.mdl-card__supporting-text
+						p Create and manage your gift lists for any occasion.
+					.mdl-card__actions
+						a.mdl-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--primary(href="/alliwantfor/lists/manage") Go
+			.mdl-cell.mdl-cell--4-col
+				.mdl-card.mdl-shadow--4dp.card-wide
+					.mdl-card__title#home-card-3.home-card
+						h5 Manage gifts
+					//.mdl-card__media
+						p pic
+					.mdl-card__supporting-text
+						p Look after all your gifts.
+					.mdl-card__actions
+						a.mdl-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--primary(href="/alliwantfor/gifts/manage") Go

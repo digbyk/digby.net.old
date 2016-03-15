@@ -11,28 +11,13 @@ var router = express.Router();
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
 router.get('/', ensureLoggedIn, function(req, res) {
+	res.render('aiwf/index');
+});
+
+router.get('/lists', ensureLoggedIn, function(req, res) {
 	List.find({ members: req.user.email }, {}, {sort: 'name'})
 		.then(function(lists) {
 			res.render('aiwf/lists', { lists: lists });
-		})
-		.catch(function(err) {
-			logger.error(err);
-		});
-});
-
-router.get('/:listId', ensureLoggedIn, function(req, res) {
-	var groupedGifts;
-	var numGifts;
-	Gift.find({ list: req.params.listId, owner: { '$ne': req.user.email } })
-		.sort('owner')
-		.exec()
-		.then(function(gifts) {
-			groupedGifts = _.groupBy(gifts, 'owner');
-			numGifts = gifts.length;
-			return List.findOne({ _id: req.params.listId });
-		})
-		.then(function(list) {			
-			res.render('aiwf/list', { list: list, gifts: groupedGifts, user: req.user, numGifts: numGifts });
 		})
 		.catch(function(err) {
 			logger.error(err);
@@ -107,9 +92,28 @@ router.get('/lists/delete/:id', ensureLoggedIn, function(req, res) {
 		});
 });
 
+router.get('/lists/:listId', ensureLoggedIn, function(req, res) {
+	var groupedGifts;
+	var numGifts;
+	Gift.find({ list: req.params.listId, owner: { '$ne': req.user.email } })
+		.sort('owner')
+		.exec()
+		.then(function(gifts) {
+			groupedGifts = _.groupBy(gifts, 'owner');
+			numGifts = gifts.length;
+			return List.findOne({ _id: req.params.listId });
+		})
+		.then(function(list) {			
+			res.render('aiwf/list', { list: list, gifts: groupedGifts, user: req.user, numGifts: numGifts });
+		})
+		.catch(function(err) {
+			logger.error(err);
+		});
+});
+
 router.get('/gifts/manage', ensureLoggedIn, function(req, res) {
-	Gift.find({ owner: req.user.email })
-		.populate('list', 'name', null, { sort: 'name' })
+	Gift.find({ owner: req.user.email }, {}, {sort: 'name'})
+		.populate('list')
 		.then(function(gifts) {
 			res.render('aiwf/manage-gifts', { gifts: gifts });
 		})
@@ -119,7 +123,7 @@ router.get('/gifts/manage', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/gifts/add', ensureLoggedIn, function(req, res) {
-	List.find({ owner: req.user.email })
+	List.find({ owner: req.user.email }, {}, {sort: 'name'})
 		.then(function(lists) {
 			res.render('aiwf/edit-gift', { lists: lists, owner: req.user.email });
 		})
@@ -183,7 +187,7 @@ router.get('/gifts/buy/:id', ensureLoggedIn, function(req, res) {
 		.populate('list')
 		.exec()
 		.then(function(gift) {
-			res.redirect('/alliwantfor/' + gift.list.id);
+			res.redirect('/alliwantfor/lists/' + gift.list.id);
 		})
 		.catch(function(err) {
 			logger.error('Eek');
@@ -196,7 +200,7 @@ router.get('/gifts/replace/:id', ensureLoggedIn, function(req, res) {
 		.populate('list')
 		.exec()
 		.then(function(gift) {
-			res.redirect('/alliwantfor/' + gift.list.id);
+			res.redirect('/alliwantfor/lists/' + gift.list.id);
 		})
 		.catch(function(err) {
 			logger.error('Eek');

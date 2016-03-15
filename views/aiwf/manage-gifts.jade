@@ -5,22 +5,26 @@ block append head
 
 block main
 	#content
-		h5 Manage gifts
-		table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
-			thead
-				tr
-					th.mdl-data-table__cell--non-numeric Name
-					th Actions
-			tbody
-				each gift in gifts
-					tr(data-mdl-data-table-selectable-value="gift-#{gift.id}")
-						td.mdl-data-table__cell--non-numeric
-							a(href="edit/#{gift.id}")= gift.name
-							br
-							span= gift.list.name
-						td
-							a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored(href="delete/#{gift.id}")
-								i.material-icons.md-light delete
+		.mdl-grid
+			.mdl-cell.mdl-cell--12-col
+				h2 Manage gifts
+				
+			.mdl-cell.mdl-cell--12-col
+				table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
+					thead
+						tr
+							th.mdl-data-table__cell--non-numeric Name
+							th Actions
+					tbody
+						each gift in gifts
+							tr(data-mdl-data-table-selectable-value="gift-#{gift.id}")
+								td.mdl-data-table__cell--non-numeric
+									a(href="edit/#{gift.id}")= gift.name
+									br
+									span= gift.list.name
+								td
+									a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored(href="delete/#{gift.id}")
+										i.material-icons.md-light delete
 										
 			a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
 				i.material-icons.md-light add

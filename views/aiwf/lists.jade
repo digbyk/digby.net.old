@@ -5,15 +5,19 @@ block append head
 
 block main
 	#content
-		h5 All I Want For
-		table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
-			thead
-				tr
-					th.mdl-data-table__cell--non-numeric Name
-			tbody
-				each list in lists
-					tr
-						td.mdl-data-table__cell--non-numeric
-							a(href="alliwantfor/#{list.id}") #{list.name}
-							br
-							span= list.notes
+		.mdl-grid
+			.mdl-cell.mdl-cell--12-col
+				h2 All I Want For
+				
+			.mdl-cell.mdl-cell--12-col
+				table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
+					thead
+						tr
+							th.mdl-data-table__cell--non-numeric Name
+					tbody
+						each list in lists
+							tr
+								td.mdl-data-table__cell--non-numeric
+									a(href="/alliwantfor/lists/#{list.id}") #{list.name}
+									br
+									span= list.notes
