@@ -11,27 +11,27 @@ block main
 			thead
 				tr
 					th.mdl-data-table__cell--non-numeric Name
-					th Delete
+					th Actions
 			each list in lists
 				tr(data-mdl-data-table-selectable-value="list-#{list.id}")
 					td.mdl-data-table__cell--non-numeric
 						a(href="edit/#{list.id}")= list.name
 					td
-						a(href="delete/#{list.id}")
-							i.material-icons.md-dark delete
+						a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored(href="delete/#{list.id}")
+							i.material-icons.md-light delete
 									
 		a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/lists/add")
 			i.material-icons.md-light add
 		
-		button#show-dialog.mdl-button(type="button") Test - ignore me
+		button#delete-dialog-button.mdl-button(type="button") Test - ignore me
 		
-		dialog.mdl-dialog
-			h4.mdl-dialog__title Add / edit gifts
+		dialog#delete-dialog.mdl-dialog
+			h4.mdl-dialog__title Delete list?
 			.mdl-dialog__content
-				p This is some text
+				p Are you sure you want to delete the list?
 			.mdl-dialog__actions
-			button.mdl-button(type="button") Save
-			button.mdl-button.close(type="button") Cancel
+				button.mdl-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(type="button") Delete
+				button.mdl-button.close(type="button") Cancel
   
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
@@ -42,8 +42,8 @@ block append script
 			tokenSeparators: [',', ' '],
 			placeholder: 'Add members (emails)'
 		});
-		var dialog = document.querySelector('dialog');
-		var showDialogButton = document.querySelector('#show-dialog');
+		var dialog = document.querySelector('#delete-dialog');
+		var showDialogButton = document.querySelector('#delete-dialog-button');
 		if (! dialog.showModal) {
 			dialogPolyfill.registerDialog(dialog);
 		}

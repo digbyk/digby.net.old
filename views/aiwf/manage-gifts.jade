@@ -19,8 +19,8 @@ block main
 							br
 							span= gift.list.name
 						td
-							a.mdl-list__item-secondary-action(href="delete/#{gift.id}")
-								i.material-icons.md-dark delete
+							a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored(href="delete/#{gift.id}")
+								i.material-icons.md-light delete
 										
 			a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
 				i.material-icons.md-light add
