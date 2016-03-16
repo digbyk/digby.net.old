@@ -74,3 +74,12 @@ h1, h2, h3, h4, h5, h6 {
 	height: 176px;
 	background: url('../images/theme-christmas-large.jpg') center / cover;
 }
+.background-1 {
+	background: url('../images/christmas-xmas-gifts-presents-large.jpg') center / cover;
+}
+.background-2 {
+	background: url('../images/christmas-xmas-christmas-tree-decoration-large.jpg') center / cover;
+}
+.background-3 {
+	background: url('../images/theme-christmas-large.jpg') center / cover;
+}
