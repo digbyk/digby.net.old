@@ -23,12 +23,21 @@ block main
 									br
 									span= gift.list.name
 								td
-									a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored(href="delete/#{gift.id}")
+									button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored.delete-button(data-id="#{gift.id}", data-name="#{gift.name}")
 										i.material-icons.md-light delete
 										
-			a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
-				i.material-icons.md-light add
-			
+				a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
+					i.material-icons.md-light add
+				
+				dialog#delete-dialog.mdl-dialog
+					h4.mdl-dialog__title#list-name
+					.mdl-dialog__content
+						p Are you sure you want to delete the list?
+						p#list-name
+					.mdl-dialog__actions
+						a.mdl-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.ok-button(href="delete/") Delete
+						button.mdl-button.close-button.close(type="button") Cancel
+  
 block append script
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js")
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js")
@@ -38,3 +47,21 @@ block append script
 			tokenSeparators: [',', ' '],
 			placeholder: 'Add members (emails)'
 		});
+		$('.delete-button').each(function() {
+			$(this).on('click', function() {
+				deleteList($(this).attr('data-id'), $(this).attr('data-name'));
+			});
+		});
+		var dialog = document.querySelector('#delete-dialog');
+		function deleteList(id, name) {
+			var dialog = document.querySelector('#delete-dialog');
+			if (! dialog.showModal) {
+				dialogPolyfill.registerDialog(dialog);
+			}
+			dialog.showModal();
+			dialog.querySelector('.close-button').addEventListener('click', function() {
+				dialog.close();       
+			});
+			dialog.querySelector('#list-name').innerText = name;
+			dialog.querySelector('.ok-button').href='delete/' + id;
+		}

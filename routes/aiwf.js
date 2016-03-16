@@ -83,6 +83,9 @@ router.post('/lists/save', ensureLoggedIn, function(req, res) {
 router.get('/lists/delete/:id', ensureLoggedIn, function(req, res) {
 	List.findOneAndRemove({ _id: req.params.id, owner: req.user.email })
 		.exec()
+		.then(function(list) {
+			return Gift.find({list: list.id}).remove();
+		})
 		.then(function() {
 			res.redirect('/alliwantfor/lists/manage');
 		})
