@@ -7,27 +7,25 @@ block main
 	#content
 		.mdl-grid
 			.mdl-cell.mdl-cell--12-col
-				h2= list.name
+				h2.mdl-color-text--primary= list.name
 				
 			.mdl-cell.mdl-cell--12-col
 				if numGifts === 0
 					h6 There are no gifts in this list
 				else
-					each person, name in gifts
-						h6= name
-						table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
-							thead.background-3
-								tr
-									th.mdl-data-table__cell--non-numeric 
-									th 
+					table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
+						each person, name in gifts
 							tbody
+								tr
+									td(colspan="2").mdl-data-table__cell--non-numeric.mdl-color--primary.mdl-color-text--white
+										span= name
 								each gift in person
 									tr
 										td.mdl-data-table__cell--non-numeric
 											span= gift.name
 											br
 											span
-												a(href="#{gift.url}", target="_new")= gift.url
+												a.mdl-color-text--primary(href="#{gift.url}", target="_new")= gift.url
 										td
 											if gift.boughtBy === user.email
 												a.mdl-button.mdl-js-button.mdl-button--accent Bought
@@ -35,7 +33,7 @@ block main
 													i.material-icons.md-light remove
 											else if typeof(gift.boughtBy) == 'undefined'
 												a.mdl-button.mdl-js-button.mdl-button--primary Available
-												a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--accent.mdl-color-text--white(href="/alliwantfor/gifts/buy/#{gift.id}")
+												a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--primary.mdl-color-text--white(href="/alliwantfor/gifts/buy/#{gift.id}")
 													i.material-icons.md-light add
 											else 
 												span.mdl-button.mdl-js-button.mdl-button--gray Unavailable

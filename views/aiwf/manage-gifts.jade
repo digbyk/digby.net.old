@@ -9,11 +9,11 @@ block main
 
 		.mdl-grid
 			.mdl-cell.mdl-cell--12-col
-				h2 Manage gifts
+				h2.mdl-color-text--primary Manage gifts
 				
 			.mdl-cell.mdl-cell--12-col
 				table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
-					thead.background-3
+					//thead.background-3
 						tr
 							th.mdl-data-table__cell--non-numeric 
 							th 
@@ -21,11 +21,13 @@ block main
 						each gift in gifts
 							tr(data-mdl-data-table-selectable-value="gift-#{gift.id}")
 								td.mdl-data-table__cell--non-numeric
-									a(href="edit/#{gift.id}")= gift.name
+									a.mdl-color-text--primary(href="edit/#{gift.id}")= gift.name
 									br
 									span= gift.list.name
 								td
-									button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored.delete-button(data-id="#{gift.id}", data-name="#{gift.name}")
+									a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--primary(href="edit/#{gift.id}")
+										i.material-icons.md-light edit									
+									button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--gray.delete-button(data-id="#{gift.id}", data-name="#{gift.name}")
 										i.material-icons.md-light delete
 
 			.mdl-cell.mdl-cell--12-col

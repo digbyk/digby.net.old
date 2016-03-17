@@ -7,17 +7,21 @@ block main
 	#content
 		.mdl-grid
 			.mdl-cell.mdl-cell--12-col
-				h2 All I Want For
+				h2.mdl-color-text--primary Gift Lists
 				
 			.mdl-cell.mdl-cell--12-col
 				table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
-					thead.background-1
+					//thead.background-1
 						tr
-							th.mdl-data-table__cell--non-numeric 
+							th.mdl-data-table__cell--non-numeric
+							th
 					tbody
 						each list in lists
 							tr
 								td.mdl-data-table__cell--non-numeric
-									a(href="/alliwantfor/lists/#{list.id}") #{list.name}
+									a.mdl-color-text--primary(href="/alliwantfor/lists/#{list.id}") #{list.name}
 									br
 									span= list.notes
+								td
+									a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--primary.delete-button(href="/alliwantfor/lists/#{list.id}")
+										i.material-icons.md-light keyboard_arrow_right									
