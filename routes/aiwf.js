@@ -142,7 +142,7 @@ router.get('/gifts/edit/:id', ensureLoggedIn, function(req, res) {
 		.exec()
 		.then(function(gift) {
 			theGift = gift;
-			return List.find({ owner: req.user.email });
+			return List.find({ members: req.user.email });
 		})
 		.then(function(lists) {
 			res.render('aiwf/edit-gift', { gift: theGift, lists: lists, owner: req.user.email });

@@ -22,7 +22,10 @@ block main
 								each gift in person
 									tr
 										td.mdl-data-table__cell--non-numeric
-											a.mdl-color-text--primary(href="#{gift.url}", target="_new")= gift.name
+											if gift.url
+												a.mdl-color-text--primary(href="#{gift.url}", target="_new")= gift.name
+											else
+												span.mdl-color-text--primary(href="#{gift.url}", target="_new")= gift.name
 												
 										td
 											if gift.boughtBy === user.email

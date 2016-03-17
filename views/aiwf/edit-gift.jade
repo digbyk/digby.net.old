@@ -26,7 +26,7 @@ block main
 								input.mdl-textfield__input(type="url", id="url", name="url", value="#{gift? gift.url: ''}")
 								label.mdl-textfield__label(for="url") URL
 							.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
-								label.mdl-textfield__label(for="members") Members
+								label.mdl-textfield__label(for="members") List
 								select.mdl-textfield__input(type="text", id="list", name="list", required)
 									each list in lists
 										if gift && list.id === gift.list.id
