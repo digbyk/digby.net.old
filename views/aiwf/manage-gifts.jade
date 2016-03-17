@@ -5,6 +5,8 @@ block append head
 
 block main
 	#content
+		
+
 		.mdl-grid
 			.mdl-cell.mdl-cell--12-col
 				h2 Manage gifts
@@ -25,10 +27,11 @@ block main
 								td
 									button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored.delete-button(data-id="#{gift.id}", data-name="#{gift.name}")
 										i.material-icons.md-light delete
-										
+
+			.mdl-cell.mdl-cell--12-col
 				a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/gifts/add")
 					i.material-icons.md-light add
-				
+														
 				dialog#delete-dialog.mdl-dialog
 					h4.mdl-dialog__title#list-name
 					.mdl-dialog__content
