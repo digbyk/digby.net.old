@@ -15,7 +15,7 @@ router.get('/', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/lists', ensureLoggedIn, function(req, res) {
-	List.find({ members: req.user.email }, {}, {sort: 'name'})
+	List.find({ members: req.user.email }, {}, { sort: 'name' })
 		.then(function(lists) {
 			res.render('aiwf/lists', { lists: lists });
 		})
@@ -35,9 +35,14 @@ router.get('/:listId/edit', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/lists/manage', ensureLoggedIn, function(req, res) {
-	List.find({ owner: req.user.email }, {}, {sort: 'name'})
+	var ownedLists;
+	List.find({ owner: req.user.email }, {}, { sort: 'name' })
 		.then(function(lists) {
-			res.render('aiwf/manage-lists', { lists: lists, owner: req.user.email });
+			ownedLists = lists;
+			return List.find({ members: req.user.email }, {}, { sort: 'name' })
+		})
+		.then(function(lists) {
+			res.render('aiwf/manage-lists', { ownedLists: ownedLists, memberOfLists: lists, owner: req.user.email });
 		})
 		.catch(function(err) {
 			logger.error(err);
@@ -84,13 +89,33 @@ router.get('/lists/delete/:id', ensureLoggedIn, function(req, res) {
 	List.findOneAndRemove({ _id: req.params.id, owner: req.user.email })
 		.exec()
 		.then(function(list) {
-			return Gift.find({list: list.id}).remove();
+			return Gift.find({ list: list.id }).remove();
 		})
 		.then(function() {
 			res.redirect('/alliwantfor/lists/manage');
 		})
 		.catch(function(err) {
 			logger.error('Eek');
+			logger.error(err);
+		});
+});
+
+router.get('/lists/join/:listId', ensureLoggedIn, function(req, res) {
+	List.findOneAndUpdate({ _id: req.params.listId }, {$push: {members: req.user.email}}, { new: true })
+		.then(function() {
+			res.redirect('/alliwantfor/lists');
+		})
+		.catch(function(err) {
+			logger.error(err);
+		});
+});
+
+router.get('/lists/leave/:listId', ensureLoggedIn, function(req, res) {
+	List.findOneAndUpdate({ _id: req.params.listId }, {$pull: {members: req.user.email}}, { new: true })
+		.then(function() {
+			res.redirect('/alliwantfor/lists');
+		})
+		.catch(function(err) {
 			logger.error(err);
 		});
 });
@@ -106,7 +131,7 @@ router.get('/lists/:listId', ensureLoggedIn, function(req, res) {
 			numGifts = gifts.length;
 			return List.findOne({ _id: req.params.listId });
 		})
-		.then(function(list) {			
+		.then(function(list) {
 			res.render('aiwf/list', { list: list, gifts: groupedGifts, user: req.user, numGifts: numGifts });
 		})
 		.catch(function(err) {
@@ -115,7 +140,7 @@ router.get('/lists/:listId', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/gifts/manage', ensureLoggedIn, function(req, res) {
-	Gift.find({ owner: req.user.email }, {}, {sort: 'name'})
+	Gift.find({ owner: req.user.email }, {}, { sort: 'name' })
 		.populate('list')
 		.then(function(gifts) {
 			res.render('aiwf/manage-gifts', { gifts: gifts });
@@ -126,7 +151,7 @@ router.get('/gifts/manage', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/gifts/add', ensureLoggedIn, function(req, res) {
-	List.find({ owner: req.user.email }, {}, {sort: 'name'})
+	List.find({ owner: req.user.email }, {}, { sort: 'name' })
 		.then(function(lists) {
 			res.render('aiwf/edit-gift', { lists: lists, owner: req.user.email });
 		})
@@ -186,7 +211,7 @@ router.get('/gifts/delete/:id', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/gifts/buy/:id', ensureLoggedIn, function(req, res) {
-	Gift.findOneAndUpdate({ _id: req.params.id }, {$set: {boughtBy: req.user.email}})
+	Gift.findOneAndUpdate({ _id: req.params.id }, { $set: { boughtBy: req.user.email } })
 		.populate('list')
 		.exec()
 		.then(function(gift) {
@@ -199,7 +224,7 @@ router.get('/gifts/buy/:id', ensureLoggedIn, function(req, res) {
 });
 
 router.get('/gifts/replace/:id', ensureLoggedIn, function(req, res) {
-	Gift.findOneAndUpdate({ _id: req.params.id }, {$unset: {boughtBy: 1}})
+	Gift.findOneAndUpdate({ _id: req.params.id }, { $unset: { boughtBy: 1 } })
 		.populate('list')
 		.exec()
 		.then(function(gift) {
