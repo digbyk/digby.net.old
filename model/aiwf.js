@@ -18,6 +18,7 @@ var List = mongoose.model('List', listSchema);
 var giftSchema = new Schema({
 	name: String,
 	url: String,
+	type: String,
 	list: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'List'

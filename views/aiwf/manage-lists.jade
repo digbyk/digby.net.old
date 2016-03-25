@@ -7,11 +7,8 @@ block append head
 block main
 	#content
 		.mdl-grid
-			.mdl-cell.mdl-cell--12-col
-				h2.mdl-color-text--primary Manage lists
-					
 			.mdl-cell.mdl-cell--6-col
-				h4.mdl-color-text--primary Lists I own
+				h2.mdl-color-text--primary Manage lists
 			.mdl-cell.mdl-cell--6-col
 				a.new.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--colored.mdl-js-ripple-effect(href="/alliwantfor/lists/add")
 					i.material-icons.md-light add
@@ -36,26 +33,16 @@ block main
 								td
 									a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--primary(href="edit/#{list.id}")
 										i.material-icons.md-light edit									
-									button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--gray.delete-button(data-id="#{list.id}", data-name="#{list.name}")
+									button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--gray(data-id="#{list.id}", data-name="#{list.name}")
 										i.material-icons.md-light delete
-								
+									button.mdl-button.mdl-js-button.mdl-button--icon(id="list#{list.id}")
+										i.material-icons more_vert
+									ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(for="list#{list.id}")
+										li.mdl-menu__item
+											a.mdl-color-text--primary(href="edit/#{list.id}") Edit list								
+										li.mdl-menu__item
+											a.mdl-color-text--primary(href="delete/#{list.id}") Delete								
 				
-			.mdl-cell.mdl-cell--12-col
-				h4.mdl-color-text--primary Lists I'm in
-			.mdl-cell.mdl-cell--12-col
-				table.mdl-data-table.mdl-js-data-table.mdl-shadow--4dp
-					//thead.background-2
-						tr
-							th.mdl-data-table__cell--non-numeric 
-							th 
-					each list in memberOfLists
-						tr(data-mdl-data-table-selectable-value="list-#{list.id}")
-							td.mdl-data-table__cell--non-numeric
-								span.mdl-color-text--primary= list.name
-							td
-								a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--primary(href="leave/#{list.id}")
-									i.material-icons.md-light close
-								
 				dialog#delete-dialog.mdl-dialog
 					h4.mdl-dialog__title#list-name
 					.mdl-dialog__content

@@ -19,9 +19,15 @@ block main
 						each list in lists
 							tr
 								td.mdl-data-table__cell--non-numeric
+									img.list-image(src="")
 									a.mdl-color-text--primary(href="/alliwantfor/lists/#{list.id}") #{list.name}
 									br
 									span= list.notes
 								td
 									a.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--primary.delete-button(href="/alliwantfor/lists/#{list.id}")
 										i.material-icons.md-light keyboard_arrow_right									
+									button.mdl-button.mdl-js-button.mdl-button--icon(id="list#{list.id}")
+										i.material-icons more_vert
+									ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(for="list#{list.id}")
+										li.mdl-menu__item
+											a.mdl-color-text--primary(href="lists/leave/#{list.id}") Leave list

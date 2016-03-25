@@ -24,13 +24,11 @@ var client = contentful.createClient({
 });
 
 router.get('/', function (req, res) {
-	res.render('index', { error: req.flash('error') });
+	res.render('index');
 });
 
 router.get('/login', function (req, res) {
 	res.render('login', {
-		error: req.flash('error'),
-		returnTo: req.flash('ret', req.session.returnTo),
 		redirectTo: req.session.redirectTo
 	});
 });
