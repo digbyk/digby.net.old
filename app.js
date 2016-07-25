@@ -46,7 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(require('./lib/middleware.js'));
 
@@ -55,7 +55,6 @@ app.use('/auth', require('./routes/auth'));
 app.use('/test', require('./routes/test'));
 app.use('/shop', require('./routes/shop'));
 app.use('/status', require('./routes/status'));
-app.use('/alliwantfor', require('./routes/aiwf'));
 app.use('/arewenearlythereyet', require('./routes/awnty'));
 
 app.use(express.static(__dirname + '/public'));

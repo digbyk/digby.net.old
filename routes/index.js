@@ -43,7 +43,7 @@ router.get('/profile', ensureLoggedIn, function (req, res) {
 });
 
 router.get('/page/:pageId', function (req, res) {
-	client.entries({
+	client.getEntries({
 		'content_type': 'Oblrgt64W4OQuYWiSkkmy',
 		'fields.path': req.params.pageId
 	}).then(function (entries) {
