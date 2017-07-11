@@ -42,7 +42,7 @@
     "newrelic": "^1.32.0",
     "node-mocks-http": "^1.5.4",
     "node-rest-client": "^1.8.0",
-    "npm": "^3.10.9",
+    "npm": "^4.4.2",
     "passport": "^0.3.2",
     "passport-auth0": "^0.5.2",
     "passport-google-oauth": "^1.0.0",
