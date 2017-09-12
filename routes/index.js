@@ -31,6 +31,10 @@ router.get('/form', function (req, res) {
 	res.render('form');
 });
 
+router.get('/form/thankyou', function (req, res) {
+	res.render('form', {params: req.params});
+});
+
 router.get('/login', function (req, res) {
 	res.render('login', {
 		redirectTo: req.session.redirectTo
