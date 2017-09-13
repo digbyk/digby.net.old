@@ -32,7 +32,7 @@ router.get('/form', function (req, res) {
 });
 
 router.get('/form/thankyou', function (req, res) {
-	res.render('form', {params: req.params});
+	res.render('thankyou', {params: req.params});
 });
 
 router.get('/login', function (req, res) {
