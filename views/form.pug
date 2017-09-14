@@ -1,27 +1,28 @@
 extends layout
 
 block main
-	div(style="width: 100%")
-		script(type="text/javascript" src="https://waymead.formstack.com/forms/js.php/standard_lead_form?form_type=basic-trial&product_code=xg-full&referral_id=56vad55&campaign_id=65720&elqCustomerGUID=12345")
-		noscript
-			a(href="https://waymead.formstack.com/forms/standard_lead_form?last-name=hello" title="Online Form") Online Form - Standard Lead Form
-			div(style="text-align:right; font-size:x-small;")
-				a(href="http://www.formstack.com?utm_source=jsembed&utm_medium=product&utm_campaign=product+branding&fa=h,2808683" title="Online Form Builder") Online Form Builder
-		// Begin Lightbox
-		div#fsLightbox2808683.fsLightbox(style='display:none;')
-			div(align='right', style='padding-bottom:5px;')
-				a#fsLightboxClose2808683(href='#', title='close')
-					img(src='https://waymead.formstack.com/forms/images/2/cross.gif', border='0')
-			div#fsLightboxContent2808683(style='height:450px; width:650px; padding-top:0px; overflow:auto;')
-				script(type='text/javascript', src='https://waymead.formstack.com/forms/js.php/standard_lead_form?form_type=basic-trial&product_code=xg-full&referral_id=56vad55&campaign_id=65720')
-		script(type='text/javascript', src='https://waymead.formstack.com/forms/js/lightbox.js')
-		script(type='text/javascript').
-			var fsLightbox2808683 = new FSLightbox({
-				form: 2808683,
-				handleText: "Standard Lead Form",
-				handlePosition: "left",
-				handleImage: "https://waymead.formstack.com/forms/lightboxHandle.php?str=Standard+Lead+Form",
-				handle: null
-			});
-		// Use fsLightbox2808683.show() or set handle: "ID" to open lightbox without using predefined handle
-		// End Lightbox
+	div(text-align="center")
+		div(style="max-width: 600px; margin: 0 auto")
+			script(type="text/javascript" src="https://waymead.formstack.com/forms/js.php/standard_lead_form?form_type=basic-trial&product_code=xg-full&referral_id=56vad55&campaign_id=65720&elqCustomerGUID=12345")
+			noscript
+				a(href="https://waymead.formstack.com/forms/standard_lead_form?last-name=hello" title="Online Form") Online Form - Standard Lead Form
+				div(style="text-align:right; font-size:x-small;")
+					a(href="http://www.formstack.com?utm_source=jsembed&utm_medium=product&utm_campaign=product+branding&fa=h,2808683" title="Online Form Builder") Online Form Builder
+			// Begin Lightbox
+			div#fsLightbox2808683.fsLightbox(style='display:none;')
+				div(align='right', style='padding-bottom:5px;')
+					a#fsLightboxClose2808683(href='#', title='close')
+						img(src='https://waymead.formstack.com/forms/images/2/cross.gif', border='0')
+				div#fsLightboxContent2808683(style='height:450px; width:650px; padding-top:0px; overflow:auto;')
+					script(type='text/javascript', src='https://waymead.formstack.com/forms/js.php/standard_lead_form?form_type=basic-trial&product_code=xg-full&referral_id=56vad55&campaign_id=65720')
+			script(type='text/javascript', src='https://waymead.formstack.com/forms/js/lightbox.js')
+			script(type='text/javascript').
+				var fsLightbox2808683 = new FSLightbox({
+					form: 2808683,
+					handleText: "Standard Lead Form",
+					handlePosition: "left",
+					handleImage: "https://waymead.formstack.com/forms/lightboxHandle.php?str=Standard+Lead+Form",
+					handle: null
+				});
+			// Use fsLightbox2808683.show() or set handle: "ID" to open lightbox without using predefined handle
+			// End Lightbox
