@@ -22,4 +22,19 @@ patch:
         patched: '2017-05-23T06:52:14.845Z'
     - rollbar > debug > ms:
         patched: '2017-05-23T06:52:14.845Z'
-version: v1.7.0
+  'npm:debug:20170905':
+    - express-session > debug:
+        patched: '2017-09-26T06:52:11.652Z'
+    - mongoose > mquery > debug:
+        patched: '2017-09-26T06:52:11.652Z'
+    - morgan > debug:
+        patched: '2017-09-26T06:52:11.652Z'
+    - rollbar > debug:
+        patched: '2017-09-26T06:52:11.652Z'
+    - node-rest-client > debug:
+        patched: '2017-09-26T06:52:11.652Z'
+    - helmet > connect > debug:
+        patched: '2017-09-26T06:52:11.652Z'
+    - helmet > connect > finalhandler > debug:
+        patched: '2017-09-26T06:52:11.652Z'
+version: v1.7.1
