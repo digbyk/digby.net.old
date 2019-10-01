@@ -33,7 +33,7 @@
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "express-winston": "^2.4.0",
-    "helmet": "^3.8.1",
+    "helmet": "^3.21.1",
     "i18next": "^9.0.0",
     "i18next-express-middleware": "^1.0.5",
     "markdown-it": "^8.4.0",
