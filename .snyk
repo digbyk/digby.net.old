@@ -37,4 +37,17 @@ patch:
         patched: '2017-09-26T06:52:11.652Z'
     - helmet > connect > finalhandler > debug:
         patched: '2017-09-26T06:52:11.652Z'
-version: v1.7.1
+  SNYK-JS-LODASH-567746:
+    - async > lodash:
+        patched: '2020-05-05T03:15:47.132Z'
+    - contentful > lodash:
+        patched: '2020-05-05T03:15:47.132Z'
+    - contentful > contentful-sdk-core > lodash:
+        patched: '2020-05-05T03:15:47.132Z'
+    - mongoose > async > lodash:
+        patched: '2020-05-05T03:15:47.132Z'
+    - snyk > inquirer > lodash:
+        patched: '2020-05-05T03:15:47.132Z'
+    - snyk > snyk-resolve-deps > lodash:
+        patched: '2020-05-05T03:15:47.132Z'
+version: v1.14.1
