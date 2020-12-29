@@ -27,7 +27,7 @@
     "body-parser": "^1.18.0",
     "connect-ensure-login": "^0.1.1",
     "connect-redis": "^3.3.0",
-    "contentful": "^4.6.1",
+    "contentful": "^5.0.4",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
