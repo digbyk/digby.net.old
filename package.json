@@ -36,7 +36,7 @@
     "helmet": "^3.8.1",
     "i18next": "^9.0.0",
     "i18next-express-middleware": "^1.0.5",
-    "markdown-it": "^8.4.0",
+    "markdown-it": "^12.3.2",
     "moment": "^2.18.1",
     "mongoose": "^4.11.10",
     "morgan": "^1.8.2",
