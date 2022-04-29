@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "amqplib": "^0.5.1",
-    "async": "^2.5.0",
+    "async": "^2.6.4",
     "auth0": "^2.7.0",
     "body-parser": "^1.18.0",
     "connect-ensure-login": "^0.1.1",
